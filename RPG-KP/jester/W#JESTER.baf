@@ -1,0 +1,215 @@
+IF
+	Global("w#jsongs","LOCALS",1)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		RemoveSpell(WJESTER_SONGBOOK)
+		AddSpecialAbility("spcl562")
+		SetGlobal("w#jsongs","LOCALS",2)
+		Continue()
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelLT(Myself,7)
+	RandomNumGT(100,95)
+THEN
+	RESPONSE #1
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,7)
+	RandomNumGT(100,94)
+THEN
+	RESPONSE #2
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,7)
+	LevelLT(Myself,10)
+	RandomNumGT(100,93)
+THEN
+	RESPONSE #2
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,10)
+	RandomNumGT(100,92)
+THEN
+	RESPONSE #3
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,10)
+	LevelLT(Myself,13)
+	RandomNumGT(100,91)
+THEN
+	RESPONSE #3
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,13)
+	RandomNumGT(100,90)
+THEN
+	RESPONSE #4
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,13)
+	LevelLT(Myself,16)
+	RandomNumGT(100,89)
+THEN
+	RESPONSE #4
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,15)
+	LevelLT(Myself,18)
+	RandomNumGT(100,88)
+THEN
+	RESPONSE #5
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,17)
+	LevelLT(Myself,20)
+	RandomNumGT(100,87)
+THEN
+	RESPONSE #5
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,20)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #6
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,21)
+	RandomNumGT(100,85)
+THEN
+	RESPONSE #6
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #9
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,22)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #6
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,22)
+	LevelLT(Myself,25)
+	RandomNumGT(100,85)
+THEN
+	RESPONSE #7
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+IF
+	SpellCast(Myself,0)
+	Level(Myself,25)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #7
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,25)
+	LevelLT(Myself,28)
+	RandomNumGT(100,85)
+THEN
+	RESPONSE #8
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,28)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #8
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,29)
+	RandomNumGT(100,85)
+THEN
+	RESPONSE #9
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,29)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #9
+		ReallyForceSpellRES("w#backfi",Myself)
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself)
+END
+
+

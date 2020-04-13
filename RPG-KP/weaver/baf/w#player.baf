@@ -1,0 +1,32 @@
+IF
+	AreaCheck("AR0602")
+	Global("MoveScreen","AR0602",1)
+	Global("w#wstart","GLOBAL",0)
+        Kit(Protagonist,WILDMAGE)
+THEN
+	RESPONSE #100
+		GiveItemCreate("w#weave1",Protagonist,1,1,0)
+		SetGlobal("w#wstart","GLOBAL",1)
+END
+
+IF
+	AreaCheck("AR4000")
+	Global("EnteredAR4000","AR4000",1)
+	Global("w#wstart","GLOBAL",0)
+        Kit(Protagonist,WILDMAGE)
+THEN
+	RESPONSE #100
+		GiveItemCreate("w#weave1",Protagonist,1,1,0)
+		SetGlobal("w#wstart","GLOBAL",1)
+END
+
+IF
+	!AreaCheck("AR0602")
+	!AreaCheck("AR4000")
+	Global("w#wstart","GLOBAL",0)
+        Kit(Protagonist,WILDMAGE)
+THEN
+	RESPONSE #100
+		GiveItemCreate("w#weave1",Protagonist,1,1,0)
+		SetGlobal("w#wstart","GLOBAL",1)
+END

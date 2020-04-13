@@ -1,0 +1,559 @@
+IF
+        !Kit(Myself,WILDMAGE)
+        Global("w#weakit","LOCALS",0)
+        ActionListEmpty()
+THEN
+        RESPONSE #100
+                 SetGlobal("w#wstart","GLOBAL",1)
+                 AddKit(WILDMAGE)
+                 SetGlobal("w#weakit","LOCALS",1)
+                 Continue()
+END
+
+IF
+	!Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+                ChangeClass(Myself,SORCERER)
+		AddSpecialAbility("w#unrave") // Unravel*
+		ReallyForceSpellRES("w#weatu2",Myself) // No such index
+		SetGlobal("w#weaver","LOCALS",1)
+		Continue()
+END
+
+IF
+	!Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,SORCERER)
+		AddSpecialAbility("w#unrave") // Unravel*
+		AddSpecialAbility("w#unrave") // Unravel*
+		ReallyForceSpellRES("w#weave2",Myself) // No such index
+		SetGlobal("w#weaver","LOCALS",2)
+		Continue()
+END
+
+IF
+	!Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	GlobalGT("Chapter","GLOBAL",7)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,SORCERER)
+		AddSpecialAbility("w#unrave") // Unravel*
+		AddSpecialAbility("w#unrave") // Unravel*
+		AddSpecialAbility("w#unrave") // Unravel*
+		AddSpecialAbility("w#unrave") // Unravel*
+		ReallyForceSpellRES("w#weave3",Myself) // No such index
+		SetGlobal("w#weaver","LOCALS",3)
+		Continue()
+END
+
+IF
+	GlobalGT("w#weaver","LOCALS",0)
+	Global("w#weahla","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#weahla",Myself) // No such index
+		SetGlobal("w#weahla","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,4)
+	Global("w#weaver","LOCALS",1)
+	Global("w#rave05","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave05","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,9)
+	Global("w#weaver","LOCALS",2)
+	Global("w#rave10","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave10","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,14)
+	Global("w#weaver","LOCALS",2)
+	Global("w#rave15","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave15","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,19)
+	Global("w#rave20","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave20","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,24)
+	Global("w#rave25","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave25","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,29)
+	Global("w#rave30","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave30","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,34)
+	Global("w#rave35","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave35","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,39)
+	Global("w#rave40","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#unrave") // Unravel*
+		SetGlobal("w#rave40","LOCALS",1)
+		Continue()
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelLT(Myself,3)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,98)
+THEN
+	RESPONSE #1
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #1
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,2)
+	LevelLT(Myself,5)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,96)
+THEN
+	RESPONSE #2
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #2
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,4)
+	LevelLT(Myself,7)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,94)
+THEN
+	RESPONSE #3
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #3
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,6)
+	LevelLT(Myself,9)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,92)
+THEN
+	RESPONSE #4
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,8)
+	LevelLT(Myself,11)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,90)
+THEN
+	RESPONSE #5
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,10)
+	LevelLT(Myself,13)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,88)
+THEN
+	RESPONSE #6
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,13)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,86)
+THEN
+	RESPONSE #7
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,14)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,84)
+THEN
+	RESPONSE #10
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,15)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,81)
+THEN
+	RESPONSE #13
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,16)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,79)
+THEN
+	RESPONSE #16
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #8
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+    Level(Myself,17)
+	Global("w#charml","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobalTimer("w#charti","LOCALS",500)
+		SetGlobal("w#charml","LOCALS",1)
+		Continue()
+END
+
+IF
+	SpellCast(Myself,0)
+	Global("w#charml","LOCALS",1)
+	!GlobalTimerExpired("w#charti","LOCALS")
+	RandomNumGT(100,77)
+THEN
+	RESPONSE #17
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Global("w#charml","LOCALS",1)
+	GlobalTimerExpired("w#charti","LOCALS")
+THEN
+        RESPONSE #100
+		ReallyForceSpellRES("w#charml",Myself) // No such index
+		SetGlobal("w#charml","LOCALS",2)
+		Continue()
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,17)
+	Global("w#procha","LOCALS",0)
+	Global("w#charml","LOCALS",2)
+	RandomNumGT(100,77)
+THEN
+	RESPONSE #17
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,18)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,75)
+THEN
+	RESPONSE #18
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #7
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,19)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,75)
+THEN
+	RESPONSE #19
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,20)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,74)
+THEN
+	RESPONSE #20
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,21)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,74)
+THEN
+	RESPONSE #21
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,22)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,73)
+THEN
+	RESPONSE #22
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,23)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,73)
+THEN
+	RESPONSE #23
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	Level(Myself,24)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,72)
+THEN
+	RESPONSE #24
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,24)
+	Global("w#procha","LOCALS",0)
+	RandomNumGT(100,71)
+THEN
+	RESPONSE #25
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+// Protection from Chaos check:
+
+IF
+	SpellCast(Myself,0)
+	LevelLT(Myself,21)
+	GlobalGT("w#procha","LOCALS",0)
+	RandomNumGT(100,84)
+THEN
+	RESPONSE #10
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #6
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,20)
+	LevelLT(Myself,23)
+	GlobalGT("w#procha","LOCALS",0)
+	RandomNumGT(100,84)
+THEN
+	RESPONSE #11
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #5
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,22)
+	LevelLT(Myself,25)
+	GlobalGT("w#procha","LOCALS",0)
+	RandomNumGT(100,84)
+THEN
+	RESPONSE #12
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+IF
+	SpellCast(Myself,0)
+	LevelGT(Myself,24)
+	GlobalGT("w#procha","LOCALS",0)
+	RandomNumGT(100,83)
+THEN
+	RESPONSE #13
+		ReallyForceSpellRES("w#backfi",Myself) // Wild Magic Backlash
+	RESPONSE #4
+		ReallyForceSpellRES("w#wildmg",Myself) // No such index
+END
+
+// Spell learning HLAs
+
+IF
+	GlobalGT("w#scrl01","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#scrl01","LOCALS",0)
+		SetTokenObject("w#scrltg",Myself)
+		CreateCreature("w#scrl01",[-1.-1],0) // Scroll
+		Continue()
+END
+
+IF
+	GlobalGT("w#kale01","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#kale01","LOCALS",0)
+		SetTokenObject("w#kaletg",Myself)
+		CreateCreature("w#kale01",[-1.-1],0) // Kaleidoscope
+		Continue()
+END
+
+IF
+	GlobalGT("w#vial01","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#vial01","LOCALS",0)
+		SetTokenObject("w#vialtg",Myself)
+		CreateCreature("w#vial01",[-1.-1],0) // Vial
+		Continue()
+END
+
+// Multi-player check
+
+IF
+	Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#weaver","LOCALS",1)
+		SetGlobal("w#weahla","LOCALS",1)
+		Continue()
+END
+
+IF
+	Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#weaver","LOCALS",2)
+		SetGlobal("w#weahla","LOCALS",1)
+		Continue()
+END
+
+IF
+	Class(Myself,SORCERER)
+        Global("w#weaver","LOCALS",0)
+	GlobalGT("Chapter","GLOBAL",7)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#weaver","LOCALS",3)
+		SetGlobal("w#weahla","LOCALS",1)
+		Continue()
+END
+
+
+

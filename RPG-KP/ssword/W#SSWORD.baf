@@ -1,0 +1,273 @@
+IF
+	HitBy([ANYONE],CRUSHING)
+	TookDamage()
+	!GlobalTimerNotExpired("w#ssdisp","LOCALS")
+THEN
+	RESPONSE #3
+		ReallyForceSpellRES("w#ssdisp",Myself) // No such index
+		SetGlobalTimer("w#ssdisp","LOCALS",6)
+                Continue()
+	RESPONSE #97
+		Continue()
+END
+
+IF
+        !Class(Myself,SORCERER)
+        AreaCheck("AR0602")
+	Global("MoveScreen","AR0602",1)
+	Global("w#ssword","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#ssword","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,SORCERER)
+        AreaCheck("AR4000")
+	Global("TurnDay","AR4000",1)
+	Global("w#ssword","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SmallWait(35)
+		SetGlobal("w#ssword","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,SORCERER)	
+        !AreaCheck("AR0602")
+	!AreaCheck("AR4000")
+	Global("w#ssword","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#ssword","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("w#ssword","LOCALS",1)
+	AreaCheck("FW2600")
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,SORCERER)
+		ReallyForceSpellRES("w#sswhla",Myself) // No such index
+		ReallyForceSpellRES("w#sswtu2",Myself) // No such index
+		SetGlobal("w#ssword","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("w#ssword","LOCALS",1)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,SORCERER)
+		ReallyForceSpellRES("w#sswhla",Myself) // No such index
+		ReallyForceSpellRES("w#sswsoa",Myself) // No such index
+		SetGlobal("w#ssword","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("w#ssword","LOCALS",1)
+	GlobalGT("Chapter","GLOBAL",7)
+	Global("EnteredAR4000","AR4000",1)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,SORCERER)
+		ReallyForceSpellRES("w#sswhla",Myself) // No such index
+		ReallyForceSpellRES("w#sswtob",Myself) // No such index
+		SetGlobal("w#ssword","LOCALS",3)
+		Continue()
+END
+
+IF
+	GlobalGT("w#ssthac","LOCALS",0)
+	Global("w#sswspl","LOCALS",0)
+	OR(3)
+		Level(Myself,7)
+		Level(Myself,16)
+		AreaCheck("FW2600")
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#sswspl",Myself) // No such index
+		SetGlobal("w#sswspl","LOCALS",1)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,3)
+	Global("w#sswspl","LOCALS",1)
+	Global("w#ssthac","LOCALS",1)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		SetGlobal("w#ssthac","LOCALS",4)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,5)
+	Global("w#ssthac","LOCALS",4)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		ReallyForceSpellRES("w#ssat06",Myself) // No such index
+		AddSpecialAbility("w#sskeen") // Keenness
+		AddSpecialAbility("SPCL563") // Focus
+		SetGlobal("w#ssthac","LOCALS",6)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,7)
+	Global("w#ssthac","LOCALS",6)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		SetGlobal("w#ssthac","LOCALS",8)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,9)
+	Global("w#ssthac","LOCALS",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		SetGlobal("w#ssthac","LOCALS",10)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,11)
+	Global("w#ssthac","LOCALS",10)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		ReallyForceSpellRES("w#ssat12",Myself) // No such index
+		AddSpecialAbility("w#sskeen") // Keenness
+		SetGlobal("w#ssthac","LOCALS",12)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,13)
+	Global("w#ssthac","LOCALS",12)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		SetGlobal("w#ssthac","LOCALS",14)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,15)
+	Global("w#ssthac","LOCALS",14)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		SetGlobal("w#ssthac","LOCALS",16)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,17)
+	Global("w#ssthac","LOCALS",16)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#ssthac",Myself) // No such index
+		ReallyForceSpellRES("w#ssat18",Myself) // No such index
+		AddSpecialAbility("w#sskeen") // Keenness
+		SetGlobal("w#ssthac","LOCALS",18)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,23)
+	Global("w#ssthac","LOCALS",18)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#sskeen") // Keenness
+		SetGlobal("w#ssthac","LOCALS",24)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,29)
+	Global("w#ssthac","LOCALS",24)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#sskeen") // Keenness
+		SetGlobal("w#ssthac","LOCALS",30)
+		Continue()
+END
+
+IF
+	LevelGT(Myself,35)
+	Global("w#ssthac","LOCALS",30)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddSpecialAbility("w#sskeen") // Keenness
+		SetGlobal("w#ssthac","LOCALS",36)
+		Continue()
+END
+
+// Multi-player check
+
+IF
+        Class(Myself,SORCERER)
+        Global("w#ssword","LOCALS",0)
+	AreaCheck("FW2600")
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#ssword","LOCALS",2)
+		SetGlobal("w#ssthac","LOCALS",1)
+		SetGlobal("w#sswspl","LOCALS",1)
+END
+
+IF
+        Class(Myself,SORCERER)
+        Global("w#ssword","LOCALS",0)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#ssword","LOCALS",2)
+		SetGlobal("w#ssthac","LOCALS",6)
+		SetGlobal("w#sswspl","LOCALS",1)
+END
+
+IF
+        Class(Myself,SORCERER)
+        Global("w#ssword","LOCALS",0)
+	GlobalGT("Chapter","GLOBAL",7)
+	Global("EnteredAR4000","AR4000",1)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#ssword","LOCALS",3)
+		SetGlobal("w#ssthac","LOCALS",16)
+		SetGlobal("w#sswspl","LOCALS",1)
+END

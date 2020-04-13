@@ -1,0 +1,123 @@
+IF
+        !Class(Myself,BARD)
+	AreaCheck("AR0602")
+	Global("MoveScreen","AR0602",1)
+	Global("w#gjest1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,BARD)
+		SetGlobal("w#gjest1","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,BARD)
+        AreaCheck("AR4000")
+	Global("EnteredAR4000","AR4000",1)
+	Global("w#gjest1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,BARD)
+		SetGlobal("w#gjest1","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,BARD)
+        !AreaCheck("AR0602")
+	!AreaCheck("AR4000")
+	Global("w#gjest1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,BARD)
+		SetGlobal("w#gjest1","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("w#gjest1","LOCALS",1)
+	AreaCheck("FW2600")
+        GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#gthtu2",Myself) // <NO TEXT>
+		SetGlobal("w#gjest1","LOCALS",2)
+		SetGlobal("w#gjinit","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("w#gjest1","LOCALS",1)
+	!AreaCheck("FW2600")
+        GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#gthsoa",Myself) // <NO TEXT>
+		SetGlobal("w#gjest1","LOCALS",2)
+		SetGlobal("w#gjinit","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("w#gjest1","LOCALS",1)
+	GlobalGT("Chapter","GLOBAL",7)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("w#gthtob",Myself) // <NO TEXT>
+		SetGlobal("w#gjest1","LOCALS",2)
+		SetGlobal("w#gjinit","LOCALS",3)
+		Continue()
+END
+
+IF
+	Global("w#gjest1","LOCALS",2)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddKit(w#gjest2)
+		SetGlobal("w#gjest1","LOCALS",3)
+		Continue()
+END
+
+// Multi-player check
+
+IF
+        Class(Myself,BARD)
+        Global("w#gjest1","LOCALS",0)
+        AreaCheck("FW2600")
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gjest1","LOCALS",3)
+		SetGlobal("w#gjinit","LOCALS",1)
+END
+
+IF
+        Class(Myself,BARD)
+        Global("w#gjest1","LOCALS",0)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gjest1","LOCALS",3)
+		SetGlobal("w#gjinit","LOCALS",2)
+END
+
+IF
+        Class(Myself,BARD)
+        Global("w#gjest1","LOCALS",0)
+	GlobalGT("Chapter","GLOBAL",7)
+	Global("EnteredAR4000","AR4000",1)
+        ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gjest1","LOCALS",3)
+		SetGlobal("w#gjinit","LOCALS",3)
+END

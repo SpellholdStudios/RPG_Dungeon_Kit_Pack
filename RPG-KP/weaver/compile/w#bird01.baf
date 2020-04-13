@@ -1,0 +1,292 @@
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("w#brdtlk","LOCALS",1)
+		FaceObject(LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird01","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird01","LOCALS",2)
+		ForceSpellRES("w#bird01",LastSummonerOf(Myself))
+		Wait(8)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird02","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird02","LOCALS",2)
+		ForceSpellRES("w#bird02",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird03","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird03","LOCALS",2)
+		ForceSpellRES("w#bird03",LastSummonerOf(Myself))
+		Wait(5)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird04","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird04","LOCALS",2)
+		ForceSpellRES("w#bird04",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird05","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird05","LOCALS",2)
+		ForceSpellRES("w#bird05",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird06","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird06","LOCALS",2)
+		ForceSpellRES("w#bird06",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird07","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird07","LOCALS",2)
+		ForceSpellRES("w#bird07",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird08","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird08","LOCALS",2)
+		ForceSpellRES("w#bird08",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird09","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird09","LOCALS",2)
+		ForceSpellRES("w#bird09",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird10","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird10","LOCALS",2)
+		ForceSpellRES("w#bird10",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird11","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird11","LOCALS",2)
+		ForceSpellRES("w#bird11",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird12","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird12","LOCALS",2)
+		ForceSpellRES("w#bird12",LastSummonerOf(Myself))
+		Wait(5)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird13","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird13","LOCALS",2)
+		ForceSpellRES("w#bird13",LastSummonerOf(Myself))
+		Wait(4)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird14","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird14","LOCALS",2)
+		ForceSpellRES("w#bird14",LastSummonerOf(Myself))
+		Wait(5)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird15","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird15","LOCALS",2)
+		ForceSpellRES("w#bird15",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird16","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird16","LOCALS",2)
+		ForceSpellRES("w#bird16",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird17","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird17","LOCALS",2)
+		ForceSpellRES("w#bird17",LastSummonerOf(Myself))
+		Wait(4)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird18","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird18","LOCALS",2)
+		ForceSpellRES("w#bird18",LastSummonerOf(Myself))
+		Wait(4)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird19","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird19","LOCALS",2)
+		ForceSpellRES("w#bird19",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+IF
+	See(LastSummonerOf(Myself))
+	Global("w#brdtlk","LOCALS",2)
+	Global("w#bird20","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("w#brdtlk","LOCALS",3)
+		SetGlobal("w#bird20","LOCALS",2)
+		ForceSpellRES("w#bird20",LastSummonerOf(Myself))
+		Wait(3)
+		StartDialogueNoSet(LastSummonerOf(Myself))
+END
+
+

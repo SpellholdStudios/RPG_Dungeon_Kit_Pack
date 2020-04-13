@@ -1,0 +1,2025 @@
+BACKUP ~RPG-KP\backup~
+AUTHOR ~Olryx2@Yahoo.co.uk~
+
+ALWAYS
+  AT_INTERACTIVE_EXIT ~VIEW RPG-KP/readme-RPGKP.chm~
+END
+
+BEGIN ~Kitpack Component - Soldier Kit ~
+
+ADD_KIT ~S#Sold~
+ ~S#Sold                1           1           1           1           1           1           1           1~
+ ~S#Sold 3 3 5 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 5 3 3 5 5 5 5 3 3 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3~
+ ~S#Sold                9       0       0       0       9       0~
+ ~S#Sold                1       1       1       0       0       -2~
+ ~S#Sold                9       0       0       0       0       0~
+ ~S#Sold                9       0       0       0       15      0~
+ ~S#Sold                1       1       1       0       0       0       0       0       0~
+ ~S#Sold                0       0       0       0       0       0~
+ ~RPG-KP\2da\Soldier\s#sold.2da~
+ ~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+ ~0x00004000     2~
+ ~FI04~
+ ~CHAN09 * HELM14 BAG20 RING09 RING46 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 HALB08~
+ SAY ~SOLDIER~
+ SAY ~SOLDIER~
+ SAY ~SOLDIER: Not to be confused with your average fighter, these fellows are career soldiers, usually in a country's army, and always by choice.  Lacking the unwillingness of a draftee and the greed of a mercenary, the soldier exhibits remarkable skill and loyalty.
+
+ADVANTAGES
++1 to Strength, Constitution and Dexterity
+Starts with one proficiency point in spear and longbow
+Gains the ability Charge 1x day/5 levels. Gives +2 to damage and 30% chance of stunning for 2 rounds.
+
+DISADVANTAGES
+May not dual class
+Must be of lawful alignment
+Can only achieve grand mastery with polearms and bows.~
+
+COPY ~RPG-KP\abilities\soldier\SPCL831.spl~ ~override~
+ SAY NAME1 ~Charge~
+ SAY NAME2 ~Charge~
+
+COPY ~RPG-KP\abilities\soldier\s#pro.SPL~ ~override~ //Prof Points amendment
+
+BEGIN ~Kitpack Component - Wizardslayer Enhancements~
+
+ACTION_IF FILE_EXISTS ~override/r#WizardslayerEnhancements.rpgd~
+ THEN BEGIN
+  FAIL ~This component is already installed.~
+ END ELSE BEGIN
+  COPY_EXISTING ~SW1H01.ITM~ ~override/r#WizardslayerEnhancements.rpgd~
+ END
+
+PRINT ~This component may take a few minutes to install.~
+
+COPY ~RPG-KP/ws_enhancements~ ~override~
+
+// Description
+STRING_SET 25203 ~WIZARD SLAYER: The Wizard Slayer is a fighter who has focused his efforts toward the destruction of spellcasters. They believe that Wizards and (to a lesser extent) Priests represent a very real danger to the community as a whole: The study of magic is very taxing on the mind, and weakened--or tempted--individuals can easily wreak a great deal of havoc and carnage before they can be contained. For this reason, strict methods of control must be put into effect, and certain guardians must be trained to overcome any rogue spellcaster. Wizard Slayers study just enough of the mystical arts to be able to defy them: They can "bend" the effects of hostile spells in order to avoid being harmed by them, they learn how to gauge a crafty Wizard's true position based on the flickering Illusions that he uses to protect himself, and they can focus their own vital energies into a disruptive force that can cause any spellcaster to lose his concentration; this spell-disrupting energy can be delivered by means of a powerful, focused shout that partially deafens the spellcaster, or via a physical blow. Of course, with all this time devoted to the study of dispatching spellcasters, Wizard Slayers have little opportunity for practicing actual combat techniques, which is what restricts a Wizard Slayer from becoming as skillful with weapons as a true Fighter could. Also, due to their loathing of enchantment and its results, they will absolutely refuse to use a wide array of magical items--although their familiarity with the arcane arts enables them to use certain items that a regular Fighter could not.
+
+ADVANTAGES:
+* Gains 2% innate Magic Resistance per level
+* Gains 1% Magic Damage Resistance per level
+* -2 bonuses to Save vs. Wands and Save vs. Spells
+* Each melee hit causes cumulative Spell Failure in the victim--starts at Level 5 with 5% per hit, with an additional 5% every 5 levels thereafter. (This is the only thing that I am not sure can be done.)
+* Can use the Thieving skill of Detect Illusions--starts at level 1 with 3%, with an additional 3% per level up to Level 20, and 2% per level thereafter.
+* Innate ability of Anti-Magic Aura, usable 1x/day for every 12 levels. All enchantments within 15 feet of the Wizard Slayer are instantly dispelled, and all creatures within that area are Deafened, suffering 50% spellcasting failure (cumulative with other forms) for 6 rounds. The Wizard Slayer is winded (+2 penalties to THAC0, Armor Class, and Saving Throws) for the same duration after using this ability.
+
+DISADVANTAGES:
+* +1 penalty to THAC0 every 5 levels (stops at Level 20)
+* Cannot wear magical Rings, Amulets, Gauntlets, Girdles, Cloaks, or Boots, except those that would be most useful when used against spellcasters
+* Cannot use ANY items that cast spells, unless those items or spells are Anti-Spellcaster in nature
+* +1 penalties to Save vs. Death, Save vs. Polymorph, & Save vs. Breath Weapon
+* Limited to Mastery (***) in any weapon
+* Limited to Proficiency (*) in any weapon style~
+
+// Items to open up to wizard slayers
+COPY_EXISTING ~PLAT06.ITM~ ~override~ // Ankheg Plate Mail +2
+	      ~BELT10.ITM~ ~override~ // Belt of Inertial Barrier
+	      ~CLCK05.ITM~ ~override~ // Cloak of Balduran
+	      ~CLCK26.ITM~ ~override~ // Cloak of Mirroring
+	      ~RODS01.ITM~ ~override~ // Rod of Absorption
+	      ~MISC3L.ITM~ ~override~ // Horn of Silence
+	      ~AMUL19.ITM~ ~override~ // Amulet of 5% Magic Resistance
+	      ~AMUL25.ITM~ ~override~ // Amulet of Spell Warding
+	      ~AMUL20.ITM~ ~override~ // Kaligun's Amulet of Magic Resistance
+	      ~MISC3E.ITM~ ~override~ // Black Spider Figurine
+	      ~MISC3I.ITM~ ~override~ // Silver Horn of Valhalla
+	      ~POTN11.ITM~ ~override~ // Potion of Invulnerability
+	      ~POTN33.ITM~ ~override~ // Potion of Magic Blocking
+	      ~POTN34.ITM~ ~override~ // Potion of Magic Protection
+	      ~POTN35.ITM~ ~override~ // Potion of Magic Shielding
+	      ~RING34.ITM~ ~override~ // Ring of Spell Turning
+	      ~WAND18.ITM~ ~override~ // Wand of Spell Striking
+	      ~MISC3H.ITM~ ~override~ // Horn of Blasting
+	      ~POTN42.ITM~ ~override~ // Potion of Invulnerability
+	      ~MISC72.ITM~ ~override~ // The Claw of Kazgaroth
+	      ~CLCK03.ITM~ ~override~ // Cloak of Displacement
+	      ~MISC3A3.ITM~ ~override~ // The Book of Infinite Spells (True Seeing)
+	      ~MISC3A5.ITM~ ~override~ // The Book of Infinite Spells (Spell Turning)
+	      ~MISC9Y.ITM~ ~override~ // Brine Potion
+	      ~POTN21.ITM~ ~override~ // Potion of Clarity
+	      ~POTN45.ITM~ ~override~ // Potion of Freedom
+	      ~POTN46.ITM~ ~override~ // Potion of Stone Form
+	      ~RING09.ITM~ ~override~ // Ring of Free Action
+	      ~RING39.ITM~ ~override~ // Ring of Gaxx
+	      ~RING33.ITM~ ~override~ // Ring of the Ram
+ READ_BYTE 0x2f "usability"
+ WRITE_BYTE 0x2f ("%usability%" BAND "0b11111101")
+BUT_ONLY_IF_IT_CHANGES
+
+ACTION_IF FILE_EXISTS_IN_GAME ~GLOBBLU1.ITM~
+ THEN BEGIN
+  COPY_EXISTING_REGEXP ~GLOB.*\.ITM~ ~override~ // The globes found in Watchers Keep
+   READ_BYTE 0x2f "usability"
+   WRITE_BYTE 0x2f ("%usability%" BAND "0b11111101")
+  BUT_ONLY_IF_IT_CHANGES
+END // ACTION_IF
+
+// Items to close off to Wizard Slayers
+COPY_EXISTING ~CHAN20.ITM~ ~override~ // White Dragon Scale
+	      ~WA2HELM.ITM~ ~override~ // Vhailor's Helm
+	      ~HELM16.ITM~ ~override~ // Helm of Brilliance
+	      ~MISC9W.ITM~ ~override~ // Drow Piwafwi Cloak
+	      ~SW1H16.ITM~ ~override~ // Ilbratha +1
+ READ_BYTE 0x2f "usability"
+ WRITE_BYTE 0x2f ("%usability%" BOR "0b00000010")
+BUT_ONLY_IF_IT_CHANGES
+
+// Remove ToB 5% MR Gain
+COPY_EXISTING ~CLABFI03.2DA~ ~override~
+ REPLACE_TEXTUALLY ~AP_SPCL819~ ~****~
+BUT_ONLY_IF_IT_CHANGES
+
+// Change to Magic Resistance Gain
+COPY_EXISTING ~SPCL131.SPL~ ~override~ // Current MR gain spell
+ READ_SHORT 0x006e "ability_offset"
+ READ_SHORT 0x0070 "num_abilities"
+ READ_LONG 0x006a "feature_block_table"
+ SET "loop_counter" = "%num_abilities%"
+ FOR("loop_counter" = "%num_abilities%"; "loop_counter" >= 1; "%loop_counter%" -= 1)
+ BEGIN
+  READ_BYTE ("%feature_block_table%" + ("%loop_counter%" * 0x002f)) "ability"
+  PATCH_IF ("ability" = 0xa6)
+   THEN BEGIN
+    WRITE_LONG ("%feature_block_table%" + ("%loop_counter%" * 0x002f)) 0x2
+   END // PATCH_IF
+ END // FOR
+
+// Add 1% Magic Damage Resistance Per Level
+ACTION_IF FILE_EXISTS_IN_GAME ~25DIALOG.BIF~
+ THEN BEGIN
+  COPY_EXISTING ~CLABFI03.2DA~ ~override~ // Wizard Slayer CLAB File
+   SET "loop_counter" = 1
+   WHILE ("%loop_counter%" < 42)
+   BEGIN
+    SET_2DA_ENTRY 2 "%loop_counter%" 40 ~AP_R#KITWS1~
+    SET "loop_counter" = "%loop_counter%" + 1
+   END // WHILE
+  END ELSE BEGIN
+   COPY_EXISTING ~CLABFI03.2DA~ ~override~ // Wizard Slayer CLAB File
+    SET "loop_counter" = 1
+    WHILE ("%loop_counter%" < 22)
+    BEGIN
+     SET_2DA_ENTRY 2 "%loop_counter%" 20 ~AP_R#KITWS1~
+     SET "loop_counter" = "%loop_counter%" + 1
+    END // WHILE
+END // ACTION_IF
+
+// Change the Proficiencies
+COPY_EXISTING ~WEAPPROF.2DA~ ~override~
+ SET "loop_counter" = 1
+ WHILE ("%loop_counter%" < 29)
+ BEGIN
+  SET_2DA_ENTRY "%loop_counter%" 31 31 3
+  SET "loop_counter" = "%loop_counter%" + 1
+ END // WHILE
+
+COPY_EXISTING ~WEAPPROF.2DA~ ~override~
+ SET "loop_counter" = 29
+ WHILE ("%loop_counter%" < 33)
+ BEGIN
+  SET_2DA_ENTRY "%loop_counter%" 31 31 1
+  SET "loop_counter" = "%loop_counter%" + 1
+ END // WHILE
+
+// THAC0 Penalty
+COPY_EXISTING ~CLABFI03.2DA~ ~override~ // Wizard Slayer CLAB File
+ SET_2DA_ENTRY 4 1 20 ~AP_R#KITWS2~
+ SET_2DA_ENTRY 4 5 20 ~AP_R#KITWS2~
+ SET_2DA_ENTRY 4 10 20 ~AP_R#KITWS2~
+ SET_2DA_ENTRY 4 15 20 ~AP_R#KITWS2~
+ SET_2DA_ENTRY 4 20 20 ~AP_R#KITWS2~
+
+// Save Bonuses and Penalties
+COPY_EXISTING ~CLABFI03.2DA~ ~override~ // Wizard Slayer CLAB File
+ SET_2DA_ENTRY 5 1 20 ~AP_R#KITWS3~
+
+BEGIN ~Kitpack Component - Ice Knight~
+
+ADD_KIT ~S#Ice~
+ ~S#Ice                1           1           1           1           1           1           1           1~
+ ~S#Ice 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3~
+ ~S#Ice                13      13      14      0       14      0~
+ ~S#Ice                0       0       0       0       0       0~
+ ~S#Ice                9       0       0       0       0       0~
+ ~S#Ice                9       0       0       0       15      0~
+ ~S#Ice                0       1       0       1       1       0       1       0       0~
+ ~S#Ice                0       0       0       0       0       0~
+ ~RPG-KP\2da\ice knight\s#ice.2da~
+ ~K_R_H K_R_E K_R_HE~
+ ~0x00010000     12~
+ ~KP01~
+ ~ICEPLAT * HELM06 BAG20 RING09 RING02 * BOOT03 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 HALB08~
+ SAY ~Ice Knight~
+ SAY ~Ice Knight~
+ SAY ~ICE KNIGHT:
+The Ice Knights were formed when a half-elven boy longed to be a paladin but was denied that path due to his heritage. During late adolesence he and others of like mind (excluding humans) formed a wilderness guild in which the legend of the Ice Knight was born. They were also marked as druids and rangers because these were the type of people they often sided with and learned from. The gnomes, halflings, half-orcs and dwarves found themselves quite unsuited to this profession and many decided to yield to the temptation of an easier trade. Most of the half-elves and elves continued for years until some word spread of what they were doing and the news spread to the north, to a barbarian encampment. These barbarians attacked the guild in what was the guild's first test of worth. The barabarians fell, but not without the demise of many of the guild members. By this time the guild had become so small some humans were accepted in.  Most of them wander the wilderness or are hidden away from civilization, but the legend of the Ice Knight lives on through the tales of many bards...
+
+ADVANTAGES
+The Ice Knight gains the following abilities: -
+                  -Gains Ice Arrow every three levels from level 10)
+                  -Fireshield (blue) every 4 levels from level 14.
+                  -Ice Storm every 5 levels from level 15
+                  -Gains Shapeshift to Ice Salamander 3 levels from level 16
+                  -Gains Ice Clone at level 16 every 4 levels
+
+DISADVANTAGES
+- May be half-elf, elf or human.
+- Stealth ability is reduced by 50%
+- May only be of Neutral Good, Chaotic Good or True Neutral alignment.
+- May not charm animals.
+- May not use Full plate, plate mail
+- Vulnerable to Fire damage (percentage yet to be decided)
+
+
+HLA: Sword of Ice. Upon using this spell, the Ice Knight brings into being a shimmering sword-like plane of force which leaps into the Ice Knight's hands. The caster may wield this weapon mentally, as if it was a being living creaure. The sword used the Knight's current THAC0 and deals 2d8 slashing and 2d6 cold damge upon each successful hit. It acts as a +3 weapon in all respects. All creaures hit by the sword must make a save vs (magic) at -2 or be held for (2) rounds. Larger creatures, such as dragons, being immune to this effect.~
+
+////////////////////////////////////////
+/////        Item transfer         /////
+////////////////////////////////////////
+
+COPY_EXISTING ~WMART2.sto~ ~override/WMART2.sto~
+  ADD_STORE_ITEM ~ICEPLAT~ #0 #0 #0 ~IDENTIFIED~ #1
+
+COPY ~RPG-KP/items/Ice Knight/ICEPLAT.itm~            ~override/ICEPLAT.itm~
+  SAY NAME1 ~Plate Mail Armor~
+  SAY NAME2 ~Ice Plate~
+  SAY UNIDENTIFIED_DESC ~Plate mail is a combination of chain armor with metal plates covering the vital areas such as the chest, abdomen and groin.  Similar in construction to bronze plate mail, true plate mail comprises of chain and leather.
+
+STATISTICS:
+
+Armor Class: 3
+Weight: 50
+Requires: 12 Strength
+Not Usable By:
+ Bard
+ Druid
+ Mage
+ Thief~
+  SAY DESC ~This is an extremely unusual piece of armour. It was found deep in the icy peaks of Icewind Dale and appears consist completely of ice, though how exactly such a thing could be possible is unknown The armour grants immunity to cold and fire and retains its form in all conditions.
+
+STATISTICS:
+
+Armor Class: 0
+Weight: 40
+Special:
+ Grants 100% Cold resistance
+ Grants 40% Fire resistance~
+
+////////////////////////////////////////
+/////   Abilities transfer         /////
+////////////////////////////////////////
+COPY ~RPG-KP\bam\spells\ice knight~ ~override~ //Custom Bams
+COPY ~RPG-KP\abilities\Ice Knight\SPCL359.spl~ ~override~ //Stealth Modifier
+COPY ~RPG-KP\2da\ice knight\LUKP01.2DA~ ~override~ //HLA Table
+COPY ~RPG-KP\eff\Ice Knight~ ~override~ //Ice Blade bonus damage
+
+COPY ~RPG-KP\abilities\Ice Knight\SPCL358.spl~ ~override~ //Ice Storm
+ SAY NAME1 ~Ice Storm~
+ SAY NAME2 ~Ice Storm~
+
+COPY ~RPG-KP\abilities\Ice Knight\SPCL357.spl~ ~override~ //Fire Shield Blue
+ SAY NAME1 ~Fire Shield Blue~
+ SAY NAME2 ~Fire Shield Blue~
+
+COPY ~RPG-KP\abilities\Ice Knight\SPCL639.spl~ ~override~ //Ice Salamander poly
+ SAY NAME1 ~Change: Ice Salamander~
+ SAY NAME2 ~Change: Ice Salamander~
+
+COPY ~RPG-KP\abilities\Ice Knight\SPCL356.spl~ ~override~ //Ice Arrow
+ SAY NAME1 ~Ice Arrow~
+ SAY NAME2 ~Ice Arrow~
+
+COPY ~RPG-KP\abilities\Ice Knight\SPCL355.spl~ ~override~ //Ice Blade HLA
+ SAY NAME1 ~Ice Blade~
+ SAY NAME2 ~Ice Blade~
+
+COPY ~RPG-KP/items/Ice Knight/S#ICEB.ITM~            ~override~ //Ice Blade
+ SAY NAME1 ~Ice Blade~
+ SAY NAME2 ~Ice Blade~
+ SAY DESC  ~Sword of Ice. Upon using this spell, the Ice Knight brings into being a shimmering sword-like plane of force which leaps into the Ice Knight's hands. The caster may wield this weapon mentally, as if it was a being living creaure. The sword used the Knight's current THAC0 and deals 2d8 slashing and 2d6 cold damge upon each successful hit. It acts as a +3 weapon in all respects. All creaures hit by the sword must make a save vs (magic) at -2 or be held for (2) rounds. Larger creatures, such as dragons, being immune to this effect.~
+
+COPY ~RPG-KP/abilities/Ice Knight/S#IK9.spl~ ~override~
+ SAY NAME1 ~Ice Clone~
+ SAY NAME2 ~Ice Clone~
+
+//Sovran Weaver material
+
+BEGIN ~Kitpack Component -  Spellweaver: Wild Sorcerer kit~
+
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+
+// Set the stage
+STRING_SET ~54892~ ~WILD MAGE: Wild magic is a new type of magic that is characterized by powerful and dangerous surges or unpredictable magic. Generally considered to be an unfortunate byproduct of the Time of Troubles, wild magic has recently begun to attract the attention of many a curious or scholarly wizard.
+
+A Wild Mage is a wizard that specializes in the study of wild magic and has access to spells to protect him/herself from Wild Magic, since every time the mage casts a spell, there's a 5% chance of a random wild magic effect happening.  Wild magic is extremely unpredictable and should be used with caution.
+
+SPELLWEAVER: Like the sorcerer, the spellweaver has an innate talent for the arcane - yet surviving such a talent tends require a considerable amount of study and practice.  This is especially true for spellweavers, who draw their strength from the erratic ebb and flow of wild magic, a new, unpredictable type of magic generally considered to be an unfortunate by-product of the Time of Troubles.  Needless to say, disciplined mages who have little stomach for intuitive sorcerers frown even more deeply on spellweavers, harbingers of all manner of magical mayhem.
+
+It is thought that the blood of some powerful creature flows through the veins of sorcerers and spellweavers; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Spellweavers know fewer spells than wizards and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  They have access to spells to protect themselves from wild magic, since every time a spellweaver casts a spell, there's a chance dependent on the caster's level of a random wild magic effect happening. Wild magic is extremely unpredictable and should be used with caution.
+
+The combination of sorcery and wild magic takes its toll: a spellweaver saves against breath weapons and polymorph at -2 and suffers a slight fatigue penalty.  Finally, spellweavers may even be overcome by their own magic.  Every time a spellweaver casts a spell, there is a chance dependent on the caster's level of a wild magic backlash: the spell is cast as normal, but some magical energy breaks loose and hits the caster, who either falls unconscious for one round, takes some damage, or is affected by wild magic for five rounds.  The 7th level spell Improved Chaos Shield protects spellweavers from this occupational hazard.
+
+Advantages & disadvantages:
+-  May cast one extra spell/level
+-  May cast "Unravel" once per day + once per day for every 5 levels
+-  Casting level varies from 5 below to 5 above the spellweaver's own level
+-  A chance of a wild surge every time a spell is cast
+-  A chance of a wild magic backlash every time a spell is cast
+-  Suffers a -2 penalty to saves vs. breath weapons and polymorph
+-  Suffers a slight penalty to fatigue~
+
+// Kit.ids correction
+COPY_EXISTING_REGEXP GLOB ~^anomen[0-9]*\.cre~ ~override~
+                         ~^imoen[0-9]*\.cre~  ~override~
+                         ~^mazzy[0-9]*\.cre~  ~override~
+ READ_LONG 0x244 "current_kit_value"
+ PATCH_IF ("%current_kit_value%" = 0x00000000) BEGIN
+   WRITE_LONG 0x244 0x40000000
+ END
+ BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^haer[0-9]*\.cre~ ~override~
+ READ_LONG 0x244 "current_kit_value"
+ PATCH_IF ("%current_kit_value%" = 0x00000020) BEGIN
+   WRITE_LONG 0x244 0x400d0000
+ END
+ BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^korgan[0-9]*\.cre~ ~override~
+ READ_LONG 0x244 "current_kit_value"
+ PATCH_IF ("%current_kit_value%" = 0x00010000) BEGIN
+   WRITE_LONG 0x244 0x40010000
+ END
+ BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~kit.ids~ ~override~
+REPLACE_TEXTUALLY ~.*\bTRUECLASS\b~              ~0x4000 TRUECLASS~
+REPLACE_TEXTUALLY ~.*\bBERSERKER\b~              ~0x4001 BERSERKER~
+REPLACE_TEXTUALLY ~.*\bWIZARDSLAYER\b~           ~0x4002 WIZARDSLAYER~
+REPLACE_TEXTUALLY ~.*\bKENSAI\b~                 ~0x4003 KENSAI~
+REPLACE_TEXTUALLY ~.*\bCAVALIER\b~               ~0x4004 CAVALIER~
+REPLACE_TEXTUALLY ~.*\bINQUISITOR\b~             ~0x4005 INQUISITOR~
+REPLACE_TEXTUALLY ~.*\bUNDEADHUNTER\b~           ~0x4006 UNDEADHUNTER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_ABJURER\b~     ~0x0040 MAGESCHOOL_ABJURER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_CONJURER\b~    ~0x0080 MAGESCHOOL_CONJURER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_DIVINER\b~     ~0x0100 MAGESCHOOL_DIVINER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_ENCHANTER\b~   ~0x0200 MAGESCHOOL_ENCHANTER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_ILLUSIONIST\b~ ~0x0400 MAGESCHOOL_ILLUSIONIST~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_INVOKER\b~     ~0x0800 MAGESCHOOL_INVOKER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_NECROMANCER\b~ ~0x1000 MAGESCHOOL_NECROMANCER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_TRANSMUTER\b~  ~0x2000 MAGESCHOOL_TRANSMUTER~
+REPLACE_TEXTUALLY ~.*\bMAGESCHOOL_GENERALIST\b~  ~0x0000 WILDMAGE~
+REPLACE_TEXTUALLY ~.*\bFERALAN\b~                ~0x4007 FERALAN~
+REPLACE_TEXTUALLY ~.*\bSTALKER\b~                ~0x4008 STALKER~
+REPLACE_TEXTUALLY ~.*\bBEASTMASTER\b~            ~0x4009 BEASTMASTER~
+REPLACE_TEXTUALLY ~.*\bASSASIN\b~                ~0x400A ASSASIN~
+REPLACE_TEXTUALLY ~.*\bBOUNTYHUNTER\b~           ~0x400B BOUNTYHUNTER~
+REPLACE_TEXTUALLY ~.*\bSWASHBUCKLER\b~           ~0x400C SWASHBUCKLER~
+REPLACE_TEXTUALLY ~.*\bBLADE\b~                  ~0x400D BLADE~
+REPLACE_TEXTUALLY ~.*\bJESTER\b~                 ~0x400E JESTER~
+REPLACE_TEXTUALLY ~.*\bSKALD\b~                  ~0x400F SKALD~
+REPLACE_TEXTUALLY ~.*\bGODTALOS\b~               ~0x4013 GODTALOS~
+REPLACE_TEXTUALLY ~.*\bGODHELM\b~                ~0x4014 GODHELM~
+REPLACE_TEXTUALLY ~.*\bGODLATHANDER\b~           ~0x4015 GODLATHANDER~
+REPLACE_TEXTUALLY ~.*\bTOTEMIC\b~                ~0x4010 TOTEMIC~
+REPLACE_TEXTUALLY ~.*\bSHAPESHIFTER\b~           ~0x4011 SHAPESHIFTER~
+REPLACE_TEXTUALLY ~.*\bBEASTFRIEND\b~            ~0x4012 BEASTFRIEND~
+REPLACE_TEXTUALLY ~.*\bBARBARIAN\b~              ~0x0000 BARBARIAN~
+REPLACE_TEXTUALLY ~.*\bWILDMAGE\b~               ~0x0000 WILDMAGE~
+BUT_ONLY_IF_IT_CHANGES
+
+APPEND ~kit.ids~ ~0x4000 TRUECLASS~
+UNLESS ~\bTRUECLASS\b~
+APPEND ~kit.ids~ ~0x0000 BARBARIAN~
+UNLESS ~\bBARBARIAN\b~
+APPEND ~kit.ids~ ~0x0000 WILDMAGE~
+UNLESS ~\bWILDMAGE\b~
+
+ACTION_IF FILE_EXISTS ~override/w#ssword.2da~
+THEN BEGIN
+STRING_SET ~45866~ ~SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells.  It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Regardless, the Sorcerer's magic is intuitive rather than logical.  They know fewer spells than wizards, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  Other than these differences, a Sorcerer is very similar to a wizard.
+NOTE:  A sorcerer does NOT learn spells from scrolls, but instead chooses new spells with each level.  A sorcerer's prime requisite is INTELLIGENCE.
+
+SPELLWEAVER:  Spellweavers are sorcerers who draw their strength from the ebb and flow of wild magic.  They have access to spells to protect themselves from wild magic, since every time a spellweaver casts a spell, there's a chance of a random wild magic effect, a wild magic backlash, or both.
+
+Advantages & disadvantages:
+-  May cast one extra spell/level
+-  May cast "Unravel" once per day + once per day for every 5 levels
+-  Casting level varies from 5 below to 5 above the spellweaver's own level
+-  A chance of a wild surge every time a spell is cast
+-  A chance of a wild magic backlash every time a spell is cast
+-  Suffers a -2 penalty to saves vs. breath weapons and polymorph
+-  Suffers a slight penalty to fatigue
+
+SPELLSWORD: Spellswords are sorcerers who have chosen to channel a part of their innate magical capacity to enhancing their perception and combat prowess.
+
+Advantages:
+-  Sorcerer spellcasting
+-  Infravision regardless of race
+-  In character creation, may spend three proficiency points in two-weapon style and two points in other weapon styles (except sword and shield.)
+-  THAC0 reduced by two every time the spellsword gains a new spell level
+-  +6 HP every time the spellsword gains a new spell level
+-  Gains half an additional attack every six levels (up to 5/2 attacks at level 18)
+-  At level 6, spellswords may start wielding their arcane power directly through physical contact.  The spellsword's hands act as magical weapons with 1d6 base damage, enchantment and extra magical damage depending on his or her level: +1 at 6th, +2 at 12th, +3 at 18th and +4 at 24th level.
+-  May cast "Keenness" once/day + once/day/six levels: this ability detects invisibility, as per the 2nd level wizard spell, and betrays any magical effects affecting nearby creatures with a brief red glow.
+-  May cast "Artful Grace" at any spell level available in the spellbook.
+
+Disadvantages:
+-  Each successful hit has a 2% chance of draining a spell from the spellsword and turning it into 4D4+3 magical damage inflicted on the opponent.
+-  Each hit that damages the spellsword has a 3% chance of dispelling magical effects.
+-  +1 penalty to casting time due to the physical effort required
+-  Gains two fewer spells to cast per level than a regular sorcerer
+-  Has the same armor, weapon and item restrictions as a sorcerer; may not specialize in weapons~ // Sorcerer description + weaver + ssword
+END
+ELSE BEGIN
+STRING_SET ~45866~ ~SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells.  It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Regardless, the Sorcerer's magic is intuitive rather than logical.  They know fewer spells than wizards and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  Other than these differences, a Sorcerer is very similar to a wizard.
+NOTE:  A sorcerer does NOT learn spells from scrolls, but instead chooses new spells with each level.  A sorcerer's prime requisite is INTELLIGENCE.
+
+SPELLWEAVER:  Spellweavers are sorcerers who draw their strength from the ebb and flow of wild magic.  They have access to spells to protect themselves from wild magic, since every time a spellweaver casts a spell, there's a chance of a random wild magic effect, a wild magic backlash, or both.
+
+Advantages & disadvantages:
+-  May cast one extra spell/level
+-  May cast "Unravel" once per day + once per day for every 5 levels
+-  Casting level varies from 5 below to 5 above the spellweaver's own level
+-  A chance of a wild surge every time a spell is cast
+-  A chance of a wild magic backlash every time a spell is cast
+-  Suffers a -2 penalty to saves vs. breath weapons and polymorph
+-  Suffers a slight penalty to fatigue~ // Sorcerer + weaver only
+END
+
+COPY ~RPG-KP/weaver/copy~ ~override~
+     ~RPG-KP/shared/spwi124.SPL~ ~override/spwi124.SPL~
+     ~RPG-KP/shared/spwi222.SPL~ ~override/spwi222.SPL~
+     ~RPG-KP/shared/w#wildmg.SPL~ ~override/w#wildmg.SPL~
+
+// Compile dialogues and scripts
+COMPILE ~RPG-KP/weaver/compile~
+
+// Modify default scripts
+EXTEND_BOTTOM ~dplayer2.bcs~ ~RPG-KP/weaver/baf/w#player.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~RPG-KP/weaver/baf/w#player.baf~
+
+COPY ~RPG-KP/weaver/cre/w#kale01.CRE~      ~override/w#kale01.CRE~
+  SAY NAME1 ~Kaleidoscope~
+  SAY NAME2 ~Kaleidoscope~
+COPY ~RPG-KP/weaver/cre/w#vial01.CRE~      ~override/w#vial01.CRE~
+  SAY NAME1 ~Vial~
+  SAY NAME2 ~Vial~
+COPY ~RPG-KP/weaver/itm/w#kale01.ITM~      ~override/w#kale01.ITM~
+  SAY NAME1 ~Kaleidoscope~
+  SAY NAME2 ~Kaleidoscope~
+  SAY UNIDENTIFIED_DESC ~This is a toy for a child, or a trinket for an impressionable tourist, made of wood and colored glass.  The black lacquer scrapes off when you test it with a fingernail.~
+  SAY DESC ~This is a toy for a child, or a trinket for an impressionable tourist, made of wood and colored glass.  The black lacquer scrapes off when you test it with a fingernail.~
+COPY ~RPG-KP/weaver/itm/w#scrl01.ITM~      ~override/w#scrl01.ITM~
+  SAY UNIDENTIFIED_DESC ~By the look of it, this parchment might have served for a tablecloth in a wild party or two in its time.  What is left of it does not appear particularly old, just sadly neglected, and perhaps soaked in vinegar at some point.  The writing on the scroll remains faintly discernible.~
+  SAY DESC ~By the look of it, this parchment might have served for a tablecloth in a wild party or two in its time.  What is left of it does not appear particularly old, just sadly neglected, and perhaps soaked in vinegar at some point.  The writing on the scroll remains faintly discernible.~
+COPY ~RPG-KP/weaver/itm/w#vial01.ITM~      ~override/w#vial01.ITM~
+  SAY NAME1 ~Vial~
+  SAY NAME2 ~Vial~
+  SAY UNIDENTIFIED_DESC ~This appears to be an empty glass vial, slightly uneven and bubbled, roughly molten shut at both ends.  It seems doubtful that the misshapen chunk of molten sand could have swallowed up all the raw magical energy you attempted to wield.
+
+There does not seem to be any obvious use for the vial, other than to break it.~
+  SAY DESC ~This appears to be an empty glass vial, slightly uneven and bubbled, roughly molten shut at both ends.  It seems doubtful that the misshapen chunk of molten sand could have swallowed up all the raw magical energy you attempted to wield.
+
+There does not seem to be any obvious use for the vial, other than to break it.~
+COPY ~RPG-KP/weaver/itm/W#WEAVE1.ITM~             ~override/W#WEAVE1.ITM~
+  SAY DESC ~This little bottle certainly wasn't in your pack before.  Tied round the neck of the bottle is a paper label, with the words "DRINK ME" beautifully printed on it in large letters.
+
+The bottle is not marked "poison".~
+COPY ~RPG-KP/shared/SPWI723.SPL~       ~override/SPWI723.SPL~
+  SAY UNIDENTIFIED_DESC ~Improved Chaos Shield* (Abjuration)
+Level: 7
+Range: 0
+Duration: 2 turns
+Casting Time: 7
+Area of Effect: Caster
+Saving Throw: None
+
+Improved Chaos Shield increases a wild mage's chance to gain a favorable result when a wild surge occurs.  Every time a roll is made on the wild surge chart, an extra 25 is added to the dice roll.  When Nahal's Reckless Dweomer is cast, the bonus from Improved Chaos Shield stacks with the wild mage's level bonus.  Improved Chaos Shield also protects spellweavers from wild magic backlash.~
+COPY ~RPG-KP/shared/W#BACKFI.SPL~      ~override/W#BACKFI.SPL~
+  SAY NAME1 ~Wild Magic Backlash~
+COPY ~RPG-KP/weaver/spl/w#bird19.SPL~      ~override/w#bird19.SPL~
+  SAY 0x12e ~Spells drained~
+COPY ~RPG-KP/weaver/spl/w#birdsu.SPL~      ~override/w#birdsu.SPL~
+  SAY UNIDENTIFIED_DESC ~Wild Surge: I've always said that bird magic is the most difficult.~
+  SAY 0xfe ~Wild Surge: I've always said that bird magic is the most difficult.~
+COPY ~RPG-KP/weaver/spl/w#charml.SPL~      ~override/w#charml.SPL~
+  SAY 0x9e ~Wild Surge: My head!  What have you done?~
+  SAY 0xce ~Spell woven: Chaos Armor~
+COPY ~RPG-KP/weaver/spl/w#dweo01.SPL~      ~override/w#dweo01.SPL~
+  SAY NAME1 ~Level 1 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo02.SPL~      ~override/w#dweo02.SPL~
+  SAY NAME1 ~Level 2 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo03.SPL~      ~override/w#dweo03.SPL~
+  SAY NAME1 ~Level 3 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo04.SPL~      ~override/w#dweo04.SPL~
+  SAY NAME1 ~Level 4 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo05.SPL~      ~override/w#dweo05.SPL~
+  SAY NAME1 ~Level 5 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo06.SPL~      ~override/w#dweo06.SPL~
+  SAY NAME1 ~Level 6 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo07.SPL~      ~override/w#dweo07.SPL~
+  SAY NAME1 ~Level 7 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo08.SPL~      ~override/w#dweo08.SPL~
+  SAY NAME1 ~Level 8 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweo09.SPL~      ~override/w#dweo09.SPL~
+  SAY NAME1 ~Level 9 spell effect~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/w#dweoww.SPL~      ~override/w#dweoww.SPL~
+  SAY NAME1 ~RPG-KP's Wicked Dweomer*~
+  SAY UNIDENTIFIED_DESC ~RPG-KP's Wicked Dweomer* (Invocation/Evocation)
+Level: 10
+Range: Special
+Duration: Instant
+Casting Time: Special
+Area of Effect: Special
+Saving Throw: None
+
+This wild, wicked wisp of a spell resembles its first-level cousin, but is less reckless and more versatile.  The spellweaver releases a burst of wild magical energy and weaves it into a spell.  The shapes that the dweomer can take are only limited by the caster's imagination.
+
+There is a 33 % chance that the spell erupts with a wild surge.  However, the wild surge roll is made with a +33 bonus.~
+COPY ~RPG-KP/weaver/spl/W#HLAB01.SPL~      ~override/W#HLAB01.SPL~
+  SAY NAME1 ~Attempt to learn a 1st and a 2nd level spell~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 1st and a 2nd level spell
+High-level spellweavers may weave the raw mass of wild magic within them into new spells, although occasionally such weavings produce unexpected results.
+
+Reckless Dweomer and Chaos Shield can no longer handicap the spellweaver who chooses this ability and attempts to weave new spells for the 1st and 2nd spell levels.~
+COPY ~RPG-KP/weaver/spl/W#HLAB02.SPL~      ~override/W#HLAB02.SPL~
+  SAY NAME1 ~Attempt to learn a 7th level spell~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 7th level spell
+Choosing this ability allows the spellweaver to attempt to weave a new 7th level spell.~
+COPY ~RPG-KP/weaver/spl/W#HLAB04.SPL~      ~override/W#HLAB04.SPL~
+  SAY NAME1 ~Attempt to learn a 9th level spell~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 9th level spell
+Choosing this ability allows the spellweaver to attempt to weave a new 9th level spell.~
+COPY ~RPG-KP/weaver/spl/w#scrlsu.SPL~      ~override/w#scrlsu.SPL~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 1st and a 2nd level spell
+High-level spellweavers may weave the raw mass of wild magic within them into new spells, although occasionally such weavings produce unexpected results.
+
+Reckless Dweomer and Chaos Shield can no longer handicap the spellweaver who chooses this ability and attempts to weave new spells for the 1st and 2nd spell levels.~
+  SAY 0x12e ~Wild Surge: What's this in my pocket?~
+COPY ~RPG-KP/weaver/spl/w#vial01.SPL~      ~override/w#vial01.SPL~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 9th level spell
+Choosing this ability allows the spellweaver to attempt to weave a new 9th level spell.~
+  SAY 0x9e ~Permanent +7 to Wild Surge rolls~
+  SAY 0xce ~Wild Magic Backlash probability reduced~
+  SAY 0x1be ~Spell woven: Weaver's Wicked Dweomer~
+COPY ~RPG-KP/weaver/spl/w#vialsu.SPL~      ~override/w#vialsu.SPL~
+  SAY UNIDENTIFIED_DESC ~Attempt to learn a 9th level spell
+Choosing this ability allows the spellweaver to attempt to weave a new 9th level spell.~
+  SAY 0xfe ~Wild Surge: Shouldn't this spell do something?~
+COPY ~RPG-KP/weaver/spl/w#weatu2.SPL~      ~override/w#weatu2.SPL~
+  SAY 0x177e ~Spellweaver~
+  SAY 0x17ae ~spellweaver~
+COPY ~RPG-KP/weaver/spl/w#weave2.SPL~      ~override/w#weave2.SPL~
+  SAY 0x177e ~Spellweaver~
+  SAY 0x17ae ~spellweaver~
+COPY ~RPG-KP/weaver/spl/w#weave3.SPL~      ~override/w#weave3.SPL~
+  SAY 0x22be ~Spellweaver~
+  SAY 0x22ee ~spellweaver~
+
+// Refinements compatibility: HLAs
+ACTION_IF FILE_EXISTS ~override/LUSRC.2da~
+THEN BEGIN
+COPY_EXISTING ~LUSRC.2da~ ~override/LUSRC.2da~
+     SET_2DA_ENTRY 0 0 9 ~RPG-KP ABILITY~
+     SET_2DA_ENTRY 14 1 10 ~AP_W#HLAB01~
+     SET_2DA_ENTRY 14 4 10 ~1~
+     SET_2DA_ENTRY 14 5 10 ~99~
+     SET_2DA_ENTRY 14 6 10 ~1~
+     SET_2DA_ENTRY 14 7 10 ~AP_W#WEAHLA~
+     SET_2DA_ENTRY 15 1 10 ~AP_W#HLAB02~
+     SET_2DA_ENTRY 15 4 10 ~1~
+     SET_2DA_ENTRY 15 5 10 ~99~
+     SET_2DA_ENTRY 15 6 10 ~1~
+     SET_2DA_ENTRY 15 7 10 ~AP_W#HLAB01~
+     SET_2DA_ENTRY 16 1 10 ~AP_W#HLAB04~
+     SET_2DA_ENTRY 16 4 10 ~1~
+     SET_2DA_ENTRY 16 5 10 ~99~
+     SET_2DA_ENTRY 16 6 10 ~1~
+     SET_2DA_ENTRY 16 7 10 ~AP_W#HLAB02~
+     SET_2DA_ENTRY 17 1 10 ~GA_W#TANGLE~
+     SET_2DA_ENTRY 17 4 10 ~1~
+     SET_2DA_ENTRY 17 5 10 ~99~
+     SET_2DA_ENTRY 17 6 10 ~16~
+     SET_2DA_ENTRY 17 7 10 ~AP_W#WEAHLA~
+     SET_2DA_ENTRY 0 0 10 ~~
+END
+ELSE BEGIN
+ACTION_IF NOT FILE_EXISTS ~override/essering.itm~
+THEN BEGIN
+COPY_EXISTING ~LUABBR.2da~ ~override/LUABBR.2da~
+  SET_2DA_ENTRY 0 0 1 ~RPG-KP ABBREV~
+  SET_2DA_ENTRY 51 1 2 ~So0~
+  SET_2DA_ENTRY 0 0 2 ~~
+ACTION_IF FILE_EXISTS ~override/w#ssword.2da~
+THEN BEGIN
+COPY ~RPG-KP/shared/swordweaver.2da~ ~override/LUSO0.2da~
+END
+ELSE BEGIN
+COPY ~RPG-KP/unrefined/LUW#W.2da~    ~override/LUSO0.2da~
+END
+END
+END
+
+// Refinements compatibility: new spells with standard portrait icons
+ACTION_IF FILE_EXISTS ~override/LUSRC.2da~ OR FILE_EXISTS ~override/LI#FALL.SPL~
+THEN BEGIN
+COPY ~RPG-KP/refined/w#charmo.SPL~      ~override/w#charmo.SPL~
+  SAY NAME1 ~Chaos Armor*~
+  SAY UNIDENTIFIED_DESC ~Chaos Armor* (Abjuration)
+Level: 8
+Range: 0
+Duration: 2 turns
+Casting Time: 8
+Area of Effect: Caster
+Saving Throw: None
+
+Chaos Armor increases a spellweaver's chance to gain a favorable result when a wild surge occurs.  Every time a roll is made on the wild surge chart, an extra 33 is added to the dice roll.  When Nahal's Reckless Dweomer is cast, the bonus from Chaos Armor stacks with the spellweaver's level bonus.  Chaos Armor also protects the spellweaver from Unravel and wild magic backlash.~
+COPY ~RPG-KP/refined/w#tangle.SPL~      ~override/w#tangle.SPL~
+  SAY NAME1 ~Tangle*~
+  SAY UNIDENTIFIED_DESC ~Tangle*
+This ability, a more refined version of Unravel, allows the spellweaver to tangle the Weave ever so subtly, just enough to let wild magic loose upon one creature for five rounds.  Every time a tangled creature tries to cast a spell, a wild surge occurs. The target is also immune to dispel magic for the duration of the spell.
+
+Like Unravel, Tangle grows more potent as the spellweaver gains more power and control. The casting time of Tangle is initially 10 and the saving throw unmodified, but for every 8 levels of the caster, a -1 modifier is applied to the saving throw, -2 to the casting time.  Magic resistance provides no protection from Tangle.~
+  SAY 0x21e ~Tangled~
+  SAY 0x42e ~Tangled~
+  SAY 0x63e ~Tangled~
+  SAY 0x84e ~Tangled~
+  SAY 0xa5e ~Tangled~
+  SAY 0xc6e ~Tangled~
+  SAY 0xe7e ~Tangled~
+ADD_PROJECTILE ~RPG-KP/weaver/W#UNRAVE.pro~
+COPY ~RPG-KP/refined/w#unrave.SPL~      ~override/w#unrave.SPL~
+  SAY NAME1 ~Unravel*~
+  SAY UNIDENTIFIED_DESC ~Unravel*
+The distortions that a spellweaver causes in the Weave can be a curse, but also something to capitalize on.  By reaching into the magical chaos within them and letting it loose, spellweavers may unravel a little patch of the Weave for a short while.
+
+When Unravel is cast, a shockwave of wild magic bursts from the caster to a 30-foot radius.  Everyone within the area of effect - friends, foes, and the caster alike - must save vs. spells or be affected by wild magic for two rounds.  Unraveled creatures are also immune to dispel magic.  Those who make a successful saving throw manage to hold on to a secure strand of the Weave, but they must save again for every round they stay in the area of effect, which remains unraveled for one turn.
+
+As the spellweaver gains more experience, skill and power, this ability grows more potent.  The casting time of Unravel is initially 10 and the saving throw unmodified, but for every 5 levels of the caster, a -1 modifier is applied to the saving throw, -2 to the casting time.  Magic resistance provides no protection from Unravel.~
+  SAY 0x26e ~Unraveled~
+  SAY 0x44e ~Unraveled~
+  SAY 0x62e ~Unraveled~
+  SAY 0x80e ~Unraveled~
+  SAY 0x9ee ~Unraveled~
+  SAY 0xbce ~Unraveled~
+  SAY 0xdae ~Unraveled~
+  SAY 0xf8e ~Unraveled~
+  SAY 0x116e ~Unraveled~
+  WRITE_SHORT 0x98 ~%W#UNRAVE%~
+  WRITE_SHORT 0xc0 ~%W#UNRAVE%~
+  WRITE_SHORT 0xe8 ~%W#UNRAVE%~
+  WRITE_SHORT 0x110 ~%W#UNRAVE%~
+  WRITE_SHORT 0x138 ~%W#UNRAVE%~
+  WRITE_SHORT 0x160 ~%W#UNRAVE%~
+  WRITE_SHORT 0x188 ~%W#UNRAVE%~
+  WRITE_SHORT 0x1b0 ~%W#UNRAVE%~
+  WRITE_SHORT 0x1d8 ~%W#UNRAVE%~
+END
+ELSE BEGIN
+COPY ~RPG-KP\unrefined\STATDESC.2da~ ~override\STATDESC.2da~
+                REPLACE ~TANGLE~ ~Tangled~
+                REPLACE ~UNRAVE~ ~Unraveled~
+                REPLACE ~CHARMO~ ~Chaos Armor*~
+                REPLACE ~PROCHA~ ~Protected from Chaos~
+
+COPY ~RPG-KP/unrefined/states.bam~   ~override/states.bam~
+     ~RPG-KP/unrefined/states2.bam~  ~override/states2.bam~
+COPY ~RPG-KP/unrefined/w#charmo.SPL~      ~override/w#charmo.SPL~
+  SAY NAME1 ~Chaos Armor*~
+  SAY UNIDENTIFIED_DESC ~Chaos Armor* (Abjuration)
+Level: 8
+Range: 0
+Duration: 2 turns
+Casting Time: 8
+Area of Effect: Caster
+Saving Throw: None
+
+Chaos Armor increases a spellweaver's chance to gain a favorable result when a wild surge occurs.  Every time a roll is made on the wild surge chart, an extra 33 is added to the dice roll.  When Nahal's Reckless Dweomer is cast, the bonus from Chaos Armor stacks with the spellweaver's level bonus.  Chaos Armor also protects the spellweaver from Unravel and wild magic backlash.~
+COPY ~RPG-KP/unrefined/w#tangle.SPL~      ~override/w#tangle.SPL~
+  SAY NAME1 ~Tangle*~
+  SAY UNIDENTIFIED_DESC ~Tangle*
+This ability, a more refined version of Unravel, allows the spellweaver to tangle the Weave ever so subtly, just enough to let wild magic loose upon one creature for five rounds.  Every time a tangled creature tries to cast a spell, a wild surge occurs. The target is also immune to dispel magic for the duration of the spell.
+
+Like Unravel, Tangle grows more potent as the spellweaver gains more power and control. The casting time of Tangle is initially 10 and the saving throw unmodified, but for every 8 levels of the caster, a -1 modifier is applied to the saving throw, -2 to the casting time.  Magic resistance provides no protection from Tangle.~
+  SAY 0x21e ~Tangled~
+  SAY 0x42e ~Tangled~
+  SAY 0x63e ~Tangled~
+  SAY 0x84e ~Tangled~
+  SAY 0xa5e ~Tangled~
+  SAY 0xc6e ~Tangled~
+  SAY 0xe7e ~Tangled~
+ADD_PROJECTILE ~RPG-KP/weaver/W#UNRAVE.pro~
+COPY ~RPG-KP/unrefined/w#unrave.SPL~      ~override/w#unrave.SPL~
+  SAY NAME1 ~Unravel*~
+  SAY UNIDENTIFIED_DESC ~Unravel*
+The distortions that a spellweaver causes in the Weave can be a curse, but also something to capitalize on.  By reaching into the magical chaos within them and letting it loose, spellweavers may unravel a little patch of the Weave for a short while.
+
+When Unravel is cast, a shockwave of wild magic bursts from the caster to a 30-foot radius.  Everyone within the area of effect - friends, foes, and the caster alike - must save vs. spells or be affected by wild magic for two rounds.  Unraveled creatures are also immune to dispel magic.  Those who make a successful saving throw manage to hold on to a secure strand of the Weave, but they must save again for every round they stay in the area of effect, which remains unraveled for one turn.
+
+As the spellweaver gains more experience, skill and power, this ability grows more potent.  The casting time of Unravel is initially 10 and the saving throw unmodified, but for every 5 levels of the caster, a -1 modifier is applied to the saving throw, -2 to the casting time.  Magic resistance provides no protection from Unravel.~
+  SAY 0x26e ~Unraveled~
+  SAY 0x44e ~Unraveled~
+  SAY 0x62e ~Unraveled~
+  SAY 0x80e ~Unraveled~
+  SAY 0x9ee ~Unraveled~
+  SAY 0xbce ~Unraveled~
+  SAY 0xdae ~Unraveled~
+  SAY 0xf8e ~Unraveled~
+  SAY 0x116e ~Unraveled~
+  WRITE_SHORT 0x98 ~%W#UNRAVE%~
+  WRITE_SHORT 0xc0 ~%W#UNRAVE%~
+  WRITE_SHORT 0xe8 ~%W#UNRAVE%~
+  WRITE_SHORT 0x110 ~%W#UNRAVE%~
+  WRITE_SHORT 0x138 ~%W#UNRAVE%~
+  WRITE_SHORT 0x160 ~%W#UNRAVE%~
+  WRITE_SHORT 0x188 ~%W#UNRAVE%~
+  WRITE_SHORT 0x1b0 ~%W#UNRAVE%~
+  WRITE_SHORT 0x1d8 ~%W#UNRAVE%~
+END
+
+// Secondary type
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+ACTION_IF NOT FILE_CONTAINS ~override/msectype.2da~ ~ChaosShield~
+THEN BEGIN
+APPEND ~msectype.2da~ ~ChaosShield                     73978~
+END
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+SET ~typecount~ = 15
+READ_2DA_ENTRY 15 0 2 ~typestring~
+WHILE (~%typestring%~ STR_CMP ~ChaosShield~) BEGIN
+      SET ~typecount~ = (~%typecount%~ + 1)
+      READ_2DA_ENTRY ~%typecount%~ 0 2 ~typestring~
+END
+SET ~typecount~ = (~%typecount%~ - 1)
+COPY_EXISTING ~spwi222.spl~ ~override/spwi222.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0x142 ~%typecount%~
+COPY_EXISTING ~spwi723.spl~ ~override/spwi723.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0xa2 ~%typecount%~
+COPY_EXISTING ~w#charmo.spl~ ~override/w#charmo.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0xa2 ~%typecount%~
+
+COPY ~RPG-KP/shared/w#swowea.spl~ ~override/w#swowea.spl~
+
+
+// WILD JESTER
+
+BEGIN ~Kitpack Component - Wild Jester: bard kit~
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+
+COPY ~RPG-KP/jester/copy~       ~override~
+     ~RPG-KP/shared/spwi124.SPL~ ~override/spwi124.SPL~
+     ~RPG-KP/shared/spwi222.SPL~ ~override/spwi222.SPL~
+     ~RPG-KP/shared/w#wildmg.SPL~ ~override/w#wildmg.SPL~
+APPEND ~spell.ids~ ~4561 WJESTER_SONGBOOK~
+APPEND ~spell.ids~ ~4562 WJESTER_ENHANCED_SONGBOOK~
+COMPILE ~RPG-KP/jester/w#jester.baf~
+
+ADD_KIT ~w#jester~
+ ~w#jester                1           1           1           1           1           1           1           1~
+ ~w#jester 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#jester                0       12      9       13      9       15~
+ ~w#jester                0       0       0       0       0       0~
+ ~w#jester                0       17      0       0       0       17~
+ ~w#jester                0       15      0       0       0       15~
+ ~w#jester                0       1       1       1       1       1       1       1       1~
+ ~w#jester                0       0       0       0       0       0~
+ ~RPG-KP/jester/w#jester.2da~
+ ~K_B_H K_B_E K_B_HE~
+ ~0x00400000     5~
+ ~w#j~
+~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+SAY ~wild jester~
+SAY ~Wild Jester~
+SAY ~WILD JESTER: A wild jester is a bard who spins words, melodies, and wild magic into moving, inspiring, or lethal songs.  Wild jesters gain access to spells to protect themselves from wild magic, since every time a wild jester casts a spell, there is a chance of a wild surge, a wild magic backlash, or both.
+
+Wild jesters are always on the lookout for more ways to tweak the flow of magic and to befuddle the minds of men.  As they gain levels, they can learn new songs to play, and switch between them at will.
+
+Advantages:
+-  Gains one extra spell to cast per level
+-  Special bard song: can select one of several different songs via a special ability.  As the wild jester gains levels, new songs become available:
+Level 1:  Arpeggio.  Enemies and allies alike must save vs. spells or be affected by wild magic for one round.  The singer is affected by wild magic for two rounds after stopping singing.
+Level 7:  Counterpoint.  Enemies must save vs. spells at +2 or be confused for one round.  There is a slight chance of the singer being confused for one round, no save.
+Level 14:  Consonance.  The singer's party receives 10% magic resistance, +2 to saves vs. spells and +1 to other saves.  This song has no harmful effects.
+Level 21:  Dissonance.  Enemies must save vs. spells or suffer 2d4+2 magical damage each round, save vs. paralysis or be stunned for one round, and save vs. breath weapons or be deafened for one round.  The singer suffers 100% casting failure for two rounds after stopping singing.
+
+Disadvantages:
+-  A chance of a wild surge and/or a wild magic backlash every time a spell is cast, dependent on caster's level
+-  -2 to saves vs. breath and polymorph, fatigue penalty
+-  Requires 9 in Constitution and Wisdom~
+
+ACTION_IF NOT FILE_EXISTS ~override/w#jcoin.itm~
+THEN BEGIN
+COPY ~RPG-KP/jester/w#jcoin.ITM~      ~override/w#jcoin.ITM~
+  SAY NAME1 ~Loaded Coin~
+  SAY NAME2 ~Loaded Coin~
+  SAY UNIDENTIFIED_DESC ~This is a tin coin with a crescent moon on one side, a cloak on the other.~
+  SAY DESC ~This is a tin coin with a crescent moon on one side, a cloak on the other.~
+COPY ~RPG-KP/shared/SPWI723.SPL~          ~override/SPWI723.SPL~
+  SAY UNIDENTIFIED_DESC ~Improved Chaos Shield* (Abjuration)
+Level: 7
+Range: 0
+Duration: 2 turns
+Casting Time: 7
+Area of Effect: Caster
+Saving Throw: None
+
+Improved Chaos Shield increases a wild mage's chance to gain a favorable result when a wild surge occurs.  Every time a roll is made on the wild surge chart, an extra 25 is added to the dice roll.  When Nahal's Reckless Dweomer is cast, the bonus from Improved Chaos Shield stacks with the wild mage's level bonus.  Improved Chaos Shield also protects spellweavers from wild magic backlash.~
+COPY ~RPG-KP/shared/W#BACKFI.SPL~         ~override/W#BACKFI.SPL~
+  SAY NAME1 ~Wild Magic Backlash~
+COPY ~RPG-KP/jester/spl/spcl561.SPL~      ~override/spcl561.SPL~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/jester/spl/spcl562.SPL~      ~override/spcl562.SPL~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/jester/spl/w#jcoiab.SPL~     ~override/w#jcoiab.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Clumsy!~
+COPY ~RPG-KP/jester/spl/w#jcoiag.SPL~     ~override/w#jcoiag.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Quick and nimble!~
+COPY ~RPG-KP/jester/spl/w#jcoieb.SPL~     ~override/w#jcoieb.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Clumsy!~
+COPY ~RPG-KP/jester/spl/w#jcoiEG.SPL~     ~override/w#jcoiEG.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Quick and nimble!~
+COPY ~RPG-KP/jester/spl/w#jcoin.SPL~      ~override/w#jcoin.SPL~
+  SAY NAME1 ~Gambler's Fallacy~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy
+Lady Luck favors those who know how to take their chances.  By means of this ability, the wild jester may catch a thread of magic and spin it into the form of a loaded coin.
+
+For the magic to be released, the coin must be flipped and called.  Depending on the call, the wild jester's allies and enemies will be affected by either good luck and a beneficial random effect or two or bad luck and harmful random effects for the next turn.  However, the odds are on the wild jester's side: allies are very likely to enjoy good luck, enemies are very likely to suffer bad luck, and allies get saving throws against the possible ill effects, while enemies do not.
+
+If unused, the coin evaporates after twenty-four hours.~
+COPY ~RPG-KP/jester/spl/w#jmoon.SPL~      ~override/w#jmoon.SPL~
+  SAY UNIDENTIFIED_DESC ~The Moon!~
+  SAY 0x9e ~The Moon!~
+  SAY 0xce ~The Cloak!~
+  SAY 0x1ee ~The coin lands edge on and disappears.~
+COPY ~RPG-KP/jester/spl/w#js30a.SPL~      ~override/w#js30a.SPL~
+COPY ~RPG-KP/jester/spl/w#jsng01.SPL~     ~override/w#jsng01.SPL~
+  SAY NAME1 ~Arpeggio~
+COPY ~RPG-KP/jester/spl/w#jsng07.SPL~     ~override/w#jsng07.SPL~
+  SAY NAME1 ~Counterpoint~
+COPY ~RPG-KP/jester/spl/w#jsng14.SPL~     ~override/w#jsng14.SPL~
+  SAY NAME1 ~Consonance~
+COPY ~RPG-KP/jester/spl/w#jsng21.SPL~     ~override/w#jsng21.SPL~
+  SAY NAME1 ~Dissonance~
+COPY ~RPG-KP/jester/spl/w#jsng24.SPL~     ~override/w#jsng24.SPL~
+  SAY NAME1 ~Arpeggio*~
+  SAY UNIDENTIFIED_DESC ~Arpeggio~
+COPY ~RPG-KP/jester/spl/w#jsng26.SPL~     ~override/w#jsng26.SPL~
+  SAY NAME1 ~Counterpoint*~
+COPY ~RPG-KP/jester/spl/w#jsng28.SPL~     ~override/w#jsng28.SPL~
+  SAY NAME1 ~Consonance*~
+COPY ~RPG-KP/jester/spl/w#jsng30.SPL~     ~override/w#jsng30.SPL~
+  SAY NAME1 ~Dissonance*~
+COPY ~RPG-KP/jester/spl/w#jsongs.SPL~     ~override/w#jsongs.SPL~
+  SAY NAME1 ~Wilder Songs~
+  SAY UNIDENTIFIED_DESC ~Wilder Songs
+Wild jesters may compose more potent versions of their songs and further sing the world in their favor.  The more fantastic the song, however, the more draining it is on the bard.
+Level 24: Arpeggio is enhanced.  Both enemies and allies must save vs. spells at -3 or be affected by wild magic for one round.  The singer is affected by wild magic for four rounds, no save.
+Level 26: Counterpoint is enhanced.  All enemies must save vs. spells at -1 or be feebleminded for 1 round.  There is a slight chance of the singer being overcome and feebleminded for one round, no save.
+Level 28: Consonance is enhanced.  The song bestows 15% magic resistance, +3 to saves vs. spells and +2 to all other saves to the singer's party.  This song has no harmful effects.
+Level 30: Dissonance is enhanced.  All enemies must save against spells at -2 or suffer 2d8+2 magical damage, save vs. breath weapons at -3 or be deafened for two rounds, and save vs. paralysis at -2 or be stunned for one round.  There is also a 5% chance of being Mazed, no save.  The singer suffers 100% casting failure, -4 to hit and -2 to all saving throws while singing and for 4 rounds after stopping, and may take some physical damage.  There is also a 5% chance of the singer dropping unconscious for one round, no save.~
+
+// No new portrait icons if Refinements installed
+ACTION_IF FILE_EXISTS ~override/LUSRC.2da~ OR FILE_EXISTS ~override/LI#FALL.SPL~
+THEN BEGIN
+COPY ~RPG-KP/refined/W#JPROCH.SPL~    ~override/W#JPROCH.SPL~
+  SAY NAME1 ~Protection From Chaos 10' Radius~
+  SAY UNIDENTIFIED_DESC ~Protection From Chaos 10' Radius
+Wild jesters are acquainted with chaos in mind and magic, and may gain a measure of control over it.  This ability renders all allies within ten feet immune to magical commands in a manner similar to the 5th level priest spell Chaotic Commands.  In addition, the wild jester gains a +33 bonus to all wild surge rolls.  Both effects last for one turn.~
+  SAY 0x60e ~Protected from Chaos~
+COPY ~RPG-KP/refined/W#JS01A.SPL~     ~override/W#JS01A.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+COPY ~RPG-KP/refined/W#JS24A.SPL~     ~override/W#JS24A.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+END
+ELSE BEGIN
+COPY ~RPG-KP/unrefined/STATDESC.2da~ ~override\STATDESC.2da~
+                REPLACE ~TANGLE~ ~Tangled~
+                REPLACE ~UNRAVE~ ~Unraveled~
+                REPLACE ~CHARMO~ ~Chaos Armor*~
+                REPLACE ~PROCHA~ ~Protected from Chaos~
+COPY ~RPG-KP/unrefined/states.bam~   ~override/states.bam~
+     ~RPG-KP/unrefined/states2.bam~  ~override/states2.bam~
+COPY ~RPG-KP/unrefined/W#JPROCH.SPL~ ~override/W#JPROCH.SPL~
+  SAY NAME1 ~Protection From Chaos 10' Radius~
+  SAY UNIDENTIFIED_DESC ~Protection From Chaos 10' Radius
+Wild jesters are acquainted with chaos in mind and magic, and may gain a measure of control over it.  This ability renders all allies within ten feet immune to magical commands in a manner similar to the 5th level priest spell Chaotic Commands.  In addition, the wild jester gains a +33 bonus to all wild surge rolls.  Both effects last for one turn.~
+  SAY 0x60e ~Protected from Chaos~
+COPY ~RPG-KP/unrefined/w#js01a.SPL~     ~override/w#js01a.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+COPY ~RPG-KP/unrefined/w#js24a.SPL~     ~override/w#js24a.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+END
+END
+
+// Secondary type
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+ACTION_IF NOT FILE_CONTAINS ~override/msectype.2da~ ~ChaosShield~
+THEN BEGIN
+APPEND ~msectype.2da~ ~ChaosShield                     73978~
+END
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+SET ~typecount~ = 15
+READ_2DA_ENTRY 15 0 2 ~typestring~
+WHILE (~%typestring%~ STR_CMP ~ChaosShield~) BEGIN
+      SET ~typecount~ = (~%typecount%~ + 1)
+      READ_2DA_ENTRY ~%typecount%~ 0 2 ~typestring~
+END
+SET ~typecount~ = (~%typecount%~ - 1)
+COPY_EXISTING ~spwi222.spl~ ~override/spwi222.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0x142 ~%typecount%~
+COPY_EXISTING ~spwi723.spl~ ~override/spwi723.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0xa2 ~%typecount%~
+COPY_EXISTING ~w#jproch.spl~ ~override/w#jproch.spl~
+WRITE_LONG 0xa2 ~%typecount%~
+COPY ~RPG-KP/jester/spl/w#jprose.spl~ ~override/w#jprose.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+
+
+// WILD JESTER (EOE)
+
+BEGIN ~Kitpack Component - Wild Jester: Equal Opportunity Edition~
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+ACTION_IF NOT FILE_EXISTS ~override/w#jester.2da~
+THEN BEGIN
+COPY ~RPG-KP/jester/copy~       ~override~
+     ~RPG-KP/shared/spwi124.SPL~ ~override/spwi124.SPL~
+     ~RPG-KP/shared/spwi222.SPL~ ~override/spwi222.SPL~
+     ~RPG-KP/shared/w#wildmg.SPL~ ~override/w#wildmg.SPL~
+APPEND ~spell.ids~ ~4561 WJESTER_SONGBOOK~
+APPEND ~spell.ids~ ~4562 WJESTER_ENHANCED_SONGBOOK~
+COMPILE ~RPG-KP/jester/w#jester.baf~
+
+COPY ~RPG-KP/jester/w#jcoin.ITM~      ~override/w#jcoin.ITM~
+  SAY NAME1 ~Loaded Coin~
+  SAY NAME2 ~Loaded Coin~
+  SAY UNIDENTIFIED_DESC ~This is a tin coin with a crescent moon on one side, a cloak on the other.~
+  SAY DESC ~This is a tin coin with a crescent moon on one side, a cloak on the other.~
+COPY ~RPG-KP/shared/SPWI723.SPL~           ~override/SPWI723.SPL~
+  SAY UNIDENTIFIED_DESC ~Improved Chaos Shield* (Abjuration)
+Level: 7
+Range: 0
+Duration: 2 turns
+Casting Time: 7
+Area of Effect: Caster
+Saving Throw: None
+
+Improved Chaos Shield increases a wild mage's chance to gain a favorable result when a wild surge occurs.  Every time a roll is made on the wild surge chart, an extra 25 is added to the dice roll.  When Nahal's Reckless Dweomer is cast, the bonus from Improved Chaos Shield stacks with the wild mage's level bonus.  Improved Chaos Shield also protects spellweavers from wild magic backlash.~
+COPY ~RPG-KP/shared/W#BACKFI.SPL~          ~override/W#BACKFI.SPL~
+  SAY NAME1 ~Wild Magic Backlash~
+COPY ~RPG-KP/jester/spl/spcl561.SPL~      ~override/spcl561.SPL~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/jester/spl/spcl562.SPL~      ~override/spcl562.SPL~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/jester/spl/w#jcoiab.SPL~     ~override/w#jcoiab.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Clumsy!~
+COPY ~RPG-KP/jester/spl/w#jcoiag.SPL~     ~override/w#jcoiag.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Quick and nimble!~
+COPY ~RPG-KP/jester/spl/w#jcoieb.SPL~     ~override/w#jcoieb.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Clumsy!~
+COPY ~RPG-KP/jester/spl/w#jcoiEG.SPL~     ~override/w#jcoiEG.SPL~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy~
+  SAY 0x1be ~Quick and nimble!~
+COPY ~RPG-KP/jester/spl/w#jcoin.SPL~      ~override/w#jcoin.SPL~
+  SAY NAME1 ~Gambler's Fallacy~
+  SAY UNIDENTIFIED_DESC ~Gambler's Fallacy
+Lady Luck favors those who know how to take their chances.  By means of this ability, the wild jester may catch a thread of magic and spin it into the form of a loaded coin.
+
+For the magic to be released, the coin must be flipped and called.  Depending on the call, the wild jester's allies and enemies will be affected by either good luck and a beneficial random effect or two or bad luck and harmful random effects for the next turn.  However, the odds are on the wild jester's side: allies are very likely to enjoy good luck, enemies are very likely to suffer bad luck, and allies get saving throws against the possible ill effects, while enemies do not.
+
+If unused, the coin evaporates after twenty-four hours.~
+COPY ~RPG-KP/jester/spl/w#jmoon.SPL~      ~override/w#jmoon.SPL~
+  SAY UNIDENTIFIED_DESC ~The Moon!~
+  SAY 0x9e ~The Moon!~
+  SAY 0xce ~The Cloak!~
+  SAY 0x1ee ~The coin lands edge on and disappears.~
+COPY ~RPG-KP/jester/spl/w#js30a.SPL~      ~override/w#js30a.SPL~
+COPY ~RPG-KP/jester/spl/w#jsng01.SPL~     ~override/w#jsng01.SPL~
+  SAY NAME1 ~Arpeggio~
+COPY ~RPG-KP/jester/spl/w#jsng07.SPL~     ~override/w#jsng07.SPL~
+  SAY NAME1 ~Counterpoint~
+COPY ~RPG-KP/jester/spl/w#jsng14.SPL~     ~override/w#jsng14.SPL~
+  SAY NAME1 ~Consonance~
+COPY ~RPG-KP/jester/spl/w#jsng21.SPL~     ~override/w#jsng21.SPL~
+  SAY NAME1 ~Dissonance~
+COPY ~RPG-KP/jester/spl/w#jsng24.SPL~     ~override/w#jsng24.SPL~
+  SAY NAME1 ~Arpeggio*~
+  SAY UNIDENTIFIED_DESC ~Arpeggio~
+COPY ~RPG-KP/jester/spl/w#jsng26.SPL~     ~override/w#jsng26.SPL~
+  SAY NAME1 ~Counterpoint*~
+COPY ~RPG-KP/jester/spl/w#jsng28.SPL~     ~override/w#jsng28.SPL~
+  SAY NAME1 ~Consonance*~
+COPY ~RPG-KP/jester/spl/w#jsng30.SPL~     ~override/w#jsng30.SPL~
+  SAY NAME1 ~Dissonance*~
+COPY ~RPG-KP/jester/spl/w#jsongs.SPL~     ~override/w#jsongs.SPL~
+  SAY NAME1 ~Wilder Songs~
+  SAY UNIDENTIFIED_DESC ~Wilder Songs
+Wild jesters may compose more potent versions of their songs and further sing the world in their favor.  The more fantastic the song, however, the more draining it is on the bard.
+Level 24: Arpeggio is enhanced.  Both enemies and allies must save vs. spells at -3 or be affected by wild magic for one round.  The singer is affected by wild magic for four rounds, no save.
+Level 26: Counterpoint is enhanced.  All enemies must save vs. spells at -1 or be feebleminded for 1 round.  There is a slight chance of the singer being overcome and feebleminded for one round, no save.
+Level 28: Consonance is enhanced.  The song bestows 15% magic resistance, +3 to saves vs. spells and +2 to all other saves to the singer's party.  This song has no harmful effects.
+Level 30: Dissonance is enhanced.  All enemies must save against spells at -2 or suffer 2d8+2 magical damage, save vs. breath weapons at -3 or be deafened for two rounds, and save vs. paralysis at -2 or be stunned for one round.  There is also a 5% chance of being Mazed, no save.  The singer suffers 100% casting failure, -4 to hit and -2 to all saving throws while singing and for 4 rounds after stopping, and may take some physical damage.  There is also a 5% chance of the singer dropping unconscious for one round, no save.~
+
+// No new portrait icons if Refinements installed
+ACTION_IF FILE_EXISTS ~override/LUSRC.2da~ OR FILE_EXISTS ~override/LI#FALL.SPL~
+THEN BEGIN
+COPY ~RPG-KP/refined/W#JPROCH.SPL~     ~override/W#JPROCH.SPL~
+  SAY NAME1 ~Protection From Chaos 10' Radius~
+  SAY UNIDENTIFIED_DESC ~Protection From Chaos 10' Radius
+Wild jesters are acquainted with chaos in mind and magic, and may gain a measure of control over it.  This ability renders all allies within ten feet immune to magical commands in a manner similar to the 5th level priest spell Chaotic Commands.  In addition, the wild jester gains a +33 bonus to all wild surge rolls.  Both effects last for one turn.~
+  SAY 0x60e ~Protected from Chaos~
+COPY ~RPG-KP/refined/W#JS01A.SPL~     ~override/W#JS01A.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+COPY ~RPG-KP/refined/W#JS24A.SPL~     ~override/W#JS24A.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+END
+ELSE BEGIN
+COPY ~RPG-KP/unrefined/STATDESC.2da~ ~override\STATDESC.2da~
+                REPLACE ~TANGLE~ ~Tangled~
+                REPLACE ~UNRAVE~ ~Unraveled~
+                REPLACE ~CHARMO~ ~Chaos Armor*~
+                REPLACE ~PROCHA~ ~Protected from Chaos~
+COPY ~RPG-KP/unrefined/states.bam~   ~override/states.bam~
+     ~RPG-KP/unrefined/states2.bam~  ~override/states2.bam~
+COPY ~RPG-KP/unrefined/W#JPROCH.SPL~ ~override/W#JPROCH.SPL~
+  SAY NAME1 ~Protection From Chaos 10' Radius~
+  SAY UNIDENTIFIED_DESC ~Protection From Chaos 10' Radius
+Wild jesters are acquainted with chaos in mind and magic, and may gain a measure of control over it.  This ability renders all allies within ten feet immune to magical commands in a manner similar to the 5th level priest spell Chaotic Commands.  In addition, the wild jester gains a +33 bonus to all wild surge rolls.  Both effects last for one turn.~
+  SAY 0x60e ~Protected from Chaos~
+COPY ~RPG-KP/unrefined/w#js01a.SPL~     ~override/w#js01a.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+COPY ~RPG-KP/unrefined/w#js24a.SPL~     ~override/w#js24a.SPL~
+  SAY 0x12e ~Unraveled~
+  SAY 0x1ee ~Unraveled~
+END
+END
+
+// Secondary type
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+ACTION_IF NOT FILE_CONTAINS ~override/msectype.2da~ ~ChaosShield~
+THEN BEGIN
+APPEND ~msectype.2da~ ~ChaosShield                     73978~
+END
+COPY_EXISTING ~msectype.2da~ ~override/msectype.2da~
+SET ~typecount~ = 15
+READ_2DA_ENTRY 15 0 2 ~typestring~
+WHILE (~%typestring%~ STR_CMP ~ChaosShield~) BEGIN
+      SET ~typecount~ = (~%typecount%~ + 1)
+      READ_2DA_ENTRY ~%typecount%~ 0 2 ~typestring~
+END
+SET ~typecount~ = (~%typecount%~ - 1)
+COPY_EXISTING ~spwi222.spl~ ~override/spwi222.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0x142 ~%typecount%~
+COPY_EXISTING ~spwi723.spl~ ~override/spwi723.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+WRITE_LONG 0xa2 ~%typecount%~
+COPY_EXISTING ~w#jproch.spl~ ~override/w#jproch.spl~
+WRITE_LONG 0xa2 ~%typecount%~
+COPY ~RPG-KP/jester/spl/w#jprose.spl~ ~override/w#jprose.spl~
+WRITE_BYTE 0x27 ~%typecount%~
+
+COPY ~RPG-KP/jester/gjeste/w#gjest1.spl~ ~override/w#gjest1.spl~
+     ~RPG-KP/shared/w#gthsoa.spl~ ~override/w#gthsoa.spl~
+     ~RPG-KP/shared/w#gthtob.spl~ ~override/w#gthtob.spl~
+     ~RPG-KP/shared/w#gthtu2.spl~ ~override/w#gthtu2.spl~
+     ~RPG-KP/shared/w#glevel.spl~ ~override/w#glevel.spl~
+
+ADD_KIT ~w#gjest1~
+ ~w#gjest1                0           0           0           0           0           0           0           0~
+ ~w#gjest1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#gjest1                0       12      9       13      9       15~
+ ~w#gjest1                0       0       0       0       0       0~
+ ~w#gjest1                0       17      0       0       0       17~
+ ~w#gjest1                0       15      0       0       0       15~
+ ~w#gjest1                0       1       1       1       1       1       1       1       1~
+ ~w#gjest1                0       0       0       0       0       0~
+ ~RPG-KP/jester/gjeste/W#GJEST1.2DA~
+ ~K_T_H    K_T_D   K_T_G   K_T_E   K_T_HE   K_T_HL   K_T_HO~
+ ~0x00400000     4~
+ ~TH0~
+~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+SAY ~wild jester~ // Lower
+SAY ~Wild Jester~ // Mixed
+SAY ~WILD JESTER: A wild jester is a bard who spins words, melodies, and wild magic into moving, inspiring, or lethal songs.  Wild jesters gain access to spells to protect themselves from wild magic, since every time a wild jester casts a spell, there is a chance of a wild surge, a wild magic backlash, or both.
+
+Wild jesters are always on the lookout for more ways to tweak the flow of magic and to befuddle the minds of men.  As they gain levels, they can learn new songs to play, and switch between them at will.
+
+Advantages:
+-  Gains one extra spell to cast per level
+-  Special bard song: can select one of several different songs via a special ability.  As the wild jester gains levels, new songs become available:
+Level 1:  Arpeggio.  Enemies and allies alike must save vs. spells or be affected by wild magic for one round.  The singer is affected by wild magic for two rounds after stopping singing.
+Level 7:  Counterpoint.  Enemies must save vs. spells at +2 or be confused for one round.  There is a slight chance of the singer being confused for one round, no save.
+Level 14:  Consonance.  The singer's party receives 10% magic resistance, +2 to saves vs. spells and +1 to other saves.  This song has no harmful effects.
+Level 21:  Dissonance.  Enemies must save vs. spells or suffer 2d4+2 magical damage each round, save vs. paralysis or be stunned for one round, and save vs. breath weapons or be deafened for one round.  The singer suffers 100% casting failure for two rounds after stopping singing.
+
+Disadvantages:
+-  A chance of a wild surge and/or a wild magic backlash every time a spell is cast, dependent on caster's level
+-  -2 to saves vs. breath and polymorph, fatigue penalty
+-  Requires 9 in Constitution and Wisdom~ // Help
+
+ADD_KIT ~w#gjest2~
+ ~w#gjest2                1           1           1           1           1           1           1           1~
+ ~w#gjest2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#gjest2                0       12      9       13      9       15~
+ ~w#gjest2                0       0       0       0       0       0~
+ ~w#gjest2                0       17      0       0       0       17~
+ ~w#gjest2                0       15      0       0       0       15~
+ ~w#gjest2                0       1       1       1       1       1       1       1       1~
+ ~w#gjest2                0       0       0       0       0       0~
+ ~RPG-KP/jester/gjeste/w#gjest2.2da~
+ ~~
+ ~0x00400000     5~
+ ~w#j~
+~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+SAY ~wild jester~
+SAY ~Wild Jester~
+SAY ~WILD JESTER: A wild jester is a bard who spins words, melodies, and wild magic into moving, inspiring, or lethal songs.  Wild jesters gain access to spells to protect themselves from wild magic, since every time a wild jester casts a spell, there is a chance of a wild surge, a wild magic backlash, or both.
+
+Wild jesters are always on the lookout for more ways to tweak the flow of magic and to befuddle the minds of men.  As they gain levels, they can learn new songs to play, and switch between them at will.
+
+Advantages:
+-  Gains one extra spell to cast per level
+-  Special bard song: can select one of several different songs via a special ability.  As the wild jester gains levels, new songs become available:
+Level 1:  Arpeggio.  Enemies and allies alike must save vs. spells or be affected by wild magic for one round.  The singer is affected by wild magic for two rounds after stopping singing.
+Level 7:  Counterpoint.  Enemies must save vs. spells at +2 or be confused for one round.  There is a slight chance of the singer being confused for one round, no save.
+Level 14:  Consonance.  The singer's party receives 10% magic resistance, +2 to saves vs. spells and +1 to other saves.  This song has no harmful effects.
+Level 21:  Dissonance.  Enemies must save vs. spells or suffer 2d4+2 magical damage each round, save vs. paralysis or be stunned for one round, and save vs. breath weapons or be deafened for one round.  The singer suffers 100% casting failure for two rounds after stopping singing.
+
+Disadvantages:
+-  A chance of a wild surge and/or a wild magic backlash every time a spell is cast, dependent on caster's level
+-  -2 to saves vs. breath and polymorph, fatigue penalty
+-  Requires 9 in Constitution and Wisdom~
+
+COMPILE ~RPG-KP/jester/gjeste/w#gjest1.baf~
+
+// SPELLSWORD
+
+BEGIN ~Kitpack Component - Spellsword: fighter/sorcerer kit~
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+
+APPEND ~spell.ids~ ~4563 SSWORD_FOCUS~
+APPEND ~spell.ids~ ~4564 SSWORD_UNFOCUS~
+COMPILE ~RPG-KP/ssword/w#ssword.baf~
+
+COPY ~RPG-KP/ssword/copy~ ~override~
+COPY ~RPG-KP/ssword/itm/w#ssfo06.ITM~ ~override/w#ssfo06.ITM~
+  SAY NAME1 ~Touch~
+  SAY NAME2 ~Touch~
+  SAY UNIDENTIFIED_DESC ~Touch~
+  SAY DESC ~Touch~
+COPY ~RPG-KP/ssword/itm/w#ssfo12.ITM~ ~override/w#ssfo12.ITM~
+  SAY NAME1 ~Touch~
+  SAY NAME2 ~Touch~
+  SAY UNIDENTIFIED_DESC ~Touch~
+  SAY DESC ~Touch~
+COPY ~RPG-KP/ssword/itm/w#ssfo18.ITM~ ~override/w#ssfo18.ITM~
+  SAY NAME1 ~Touch~
+  SAY NAME2 ~Touch~
+  SAY UNIDENTIFIED_DESC ~Touch~
+  SAY DESC ~Touch~
+COPY ~RPG-KP/ssword/itm/w#ssfo24.ITM~ ~override/w#ssfo24.ITM~
+  SAY NAME1 ~Touch~
+  SAY NAME2 ~Touch~
+  SAY UNIDENTIFIED_DESC ~Touch~
+  SAY DESC ~Touch~
+COPY ~RPG-KP/ssword/spl/spcl563.SPL~ ~override/spcl563.SPL~ // Focus
+     SAY NAME1 ~Focus~
+     SAY UNIDENTIFIED_DESC ~Focus~
+COPY ~RPG-KP/ssword/spl/spcl564.SPL~ ~override/spcl564.SPL~ // Unfocus
+     SAY NAME1 ~Unfocus~
+     SAY UNIDENTIFIED_DESC ~Unfocus~
+COPY ~RPG-KP/ssword/spl/w#ssag1.SPL~ ~override/w#ssag1.SPL~
+     SAY NAME1 ~Artful Grace I~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag2.SPL~ ~override/w#ssag2.SPL~
+     SAY NAME1 ~Artful Grace II~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag3.SPL~ ~override/w#ssag3.SPL~
+     SAY NAME1 ~Artful Grace III~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag4.SPL~ ~override/w#ssag4.SPL~
+     SAY NAME1 ~Artful Grace IV~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag5.SPL~ ~override/w#ssag5.SPL~
+     SAY NAME1 ~Artful Grace V~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag6.SPL~ ~override/w#ssag6.SPL~
+     SAY NAME1 ~Artful Grace VI~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag7.SPL~ ~override/w#ssag7.SPL~
+     SAY NAME1 ~Artful Grace VII~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag8.SPL~ ~override/w#ssag8.SPL~
+     SAY NAME1 ~Artful Grace VIII~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#ssag9.SPL~ ~override/w#ssag9.SPL~
+     SAY NAME1 ~Artful Grace IX~
+     SAY UNIDENTIFIED_DESC ~Artful Grace (Alteration)
+Level: Special
+Range: 0
+Duration: 11 rounds
+Casting Time: Special
+Area of Effect: Caster
+Saving Throw: None
+
+Spellswords may transform their arcane power into coordination and accuracy in combat.   Artful Grace grants a bonus equal to the casting level to Strength and Dexterity, and regeneration at the rate 1HP/casting level/round.  Due to the concentration required, the spellsword suffers 66% casting failure for the duration of the spell.~
+COPY ~RPG-KP/ssword/spl/w#sskeen.SPL~ ~override/w#sskeen.SPL~
+     SAY NAME1 ~Keenness~
+     SAY UNIDENTIFIED_DESC ~Keenness~
+COPY ~RPG-KP/ssword/spl/w#ssweff.SPL~ ~override/w#ssweff.SPL~
+     SAY 0xfe ~Magic drained~
+COPY ~RPG-KP/ssword/spl/w#sswtu2.SPL~ ~override/w#sswtu2.SPL~
+     SAY 0x1ee ~Spellsword~
+     SAY 0x21e ~spellsword~
+COPY ~RPG-KP/ssword/spl/w#sswsoa.SPL~ ~override/w#sswsoa.SPL~
+     SAY 0x1ee ~Spellsword~
+     SAY 0x21e ~spellsword~
+COPY ~RPG-KP/ssword/spl/w#sswtob.SPL~ ~override/w#sswtob.SPL~
+     SAY 0x1ee ~Spellsword~
+     SAY 0x21e ~spellsword~
+
+ADD_KIT ~w#ssword~
+ ~w#ssword                1           0           1           1           0           0           0           0~
+ ~w#ssword 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 1 2 0 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+ ~w#ssword                9       0       0       9       0       9~
+ ~w#ssword                0       0       0       0       0       0~
+ ~w#ssword                17      0       0       17      0       9~
+ ~w#ssword                15      0       0       15      0       9~
+ ~w#ssword                1       1       1       1       1       1       1       1       1~
+ ~w#ssword                0       0       0       0       0       0~
+ ~RPG-KP/ssword/w#ssword.2da~
+ ~K_F_H    K_F_D   K_F_G   K_F_E   K_F_HE   K_F_HL   K_F_HO~
+ ~0x00004000     2~
+ ~So0~
+ ~CLCK13 * HELM20 BAG29 RING06 RING40 * BOOT01 AMUL21 BRAC15 BELT10 BULL01,40 BULL02,40 BULL03,40 POTN52,5 POTN04,2 POTN14,5 SLNG05 DAGG12 STAF20~
+ SAY ~spellsword~ // Lower
+ SAY ~Spellsword~ // Mixed
+ SAY ~SPELLSWORD: Spellswords are sorcerers who have chosen to channel a part of their innate magical capacity to enhancing their perception and combat prowess.  Their fighting technique relies as much on the arcane as on the physical, and they can tap directly into their inner reserve of power to wield body and spirit as a single weapon, although this interconnection also has its drawbacks.
+
+Advantages:
+-  Sorcerer spellcasting
+-  Infravision regardless of race
+-  In character creation, may spend three proficiency points in two-weapon style and two points in other weapon styles (except sword and shield.)
+-  THAC0 reduced by two every time the spellsword gains a new spell level
+-  +6 HP every time the spellsword gains a new spell level
+-  Gains half an additional attack every six levels (up to 5/2 attacks at level 18)
+-  At level 6, spellswords may start wielding their arcane power directly through physical contact.  The spellsword's hands act as magical weapons with 1d6 base damage, enchantment and extra magical damage depending on his or her level: +1 at 6th, +2 at 12th, +3 at 18th and +4 at 24th level.
+-  May cast "Keenness" once/day + once/day/six levels: this ability detects invisibility, as per the 2nd level wizard spell, and betrays any magical effects affecting nearby creatures with a brief red glow.
+-  May cast "Artful Grace" at any spell level available in the spellbook.
+
+Disadvantages:
+-  Each successful hit has a 2% chance of draining a spell from the spellsword and turning it into 4D4+3 magical damage inflicted on the opponent.
+-  Each hit that damages the spellsword has a 3% chance of dispelling magical effects.
+-  +1 penalty to casting time due to the physical effort required
+-  Gains two fewer spells to cast per level than a regular sorcerer
+-  Has the same armor, weapon and item restrictions as a sorcerer; may not specialize in weapons~ // Help
+
+ACTION_IF NOT FILE_EXISTS ~override/LUSRC.2da~
+THEN BEGIN
+ACTION_IF NOT FILE_EXISTS ~override/essering.itm~
+THEN BEGIN
+COPY_EXISTING ~LUABBR.2da~ ~override/LUABBR.2da~
+  SET_2DA_ENTRY 0 0 1 ~RPG-KP ABBREV~
+  SET_2DA_ENTRY 51 1 2 ~SO0~
+  SET_2DA_ENTRY 0 0 2 ~~
+ACTION_IF FILE_EXISTS ~override/w#weaver.bcs~
+THEN BEGIN
+COPY ~RPG-KP/shared/swordweaver.2da~ ~override/LUSO0.2da~
+END
+ELSE BEGIN
+COPY ~RPG-KP/ssword/LUW#S.2da~    ~override/LUSO0.2da~
+END
+END
+END
+
+ACTION_IF FILE_EXISTS ~override/w#weaver.bcs~
+THEN BEGIN
+STRING_SET ~45866~ ~SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells.  It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Regardless, the Sorcerer's magic is intuitive rather than logical.  They know fewer spells than wizards, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  Other than these differences, a Sorcerer is very similar to a wizard.
+NOTE:  A sorcerer does NOT learn spells from scrolls, but instead chooses new spells with each level.  A sorcerer's prime requisite is INTELLIGENCE.
+
+SPELLWEAVER:  Spellweavers are sorcerers who draw their strength from the ebb and flow of wild magic.  They have access to spells to protect themselves from wild magic, since every time a spellweaver casts a spell, there's a chance of a random wild magic effect, a wild magic backlash, or both.
+
+Advantages & disadvantages:
+-  May cast one extra spell/level
+-  May cast "Unravel" once per day + once per day for every 5 levels
+-  Casting level varies from 5 below to 5 above the spellweaver's own level
+-  A chance of a wild surge every time a spell is cast
+-  A chance of a wild magic backlash every time a spell is cast
+-  Suffers a -2 penalty to saves vs. breath weapons and polymorph
+-  Suffers a slight penalty to fatigue
+
+SPELLSWORD: Spellswords are sorcerers who have chosen to channel a part of their innate magical capacity to enhancing their perception and combat prowess.
+
+Advantages:
+-  Sorcerer spellcasting
+-  Infravision regardless of race
+-  In character creation, may spend three proficiency points in two-weapon style and two points in other weapon styles (except sword and shield.)
+-  THAC0 reduced by two every time the spellsword gains a new spell level
+-  +6 HP every time the spellsword gains a new spell level
+-  Gains half an additional attack every six levels (up to 5/2 attacks at level 18)
+-  At level 6, spellswords may start wielding their arcane power directly through physical contact.  The spellsword's hands act as magical weapons with 1d6 base damage, enchantment and extra magical damage depending on his or her level: +1 at 6th, +2 at 12th, +3 at 18th and +4 at 24th level.
+-  May cast "Keenness" once/day + once/day/six levels: this ability detects invisibility, as per the 2nd level wizard spell, and betrays any magical effects affecting nearby creatures with a brief red glow.
+-  May cast "Artful Grace" at any spell level available in the spellbook.
+
+Disadvantages:
+-  Each successful hit has a 2% chance of draining a spell from the spellsword and turning it into 4D4+3 magical damage inflicted on the opponent.
+-  Each hit that damages the spellsword has a 3% chance of dispelling magical effects.
+-  +1 penalty to casting time due to the physical effort required
+-  Gains two fewer spells to cast per level than a regular sorcerer
+-  Has the same armor, weapon and item restrictions as a sorcerer; may not specialize in weapons~ // Sorcerer description + weaver + ssword
+END
+ELSE BEGIN
+STRING_SET ~45866~ ~SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells.  It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Regardless, the Sorcerer's magic is intuitive rather than logical.  They know fewer spells than wizards, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  Other than these differences, a Sorcerer is very similar to a wizard.
+NOTE:  A sorcerer does NOT learn spells from scrolls, but instead chooses new spells with each level.  A sorcerer's prime requisite is INTELLIGENCE.
+
+SPELLSWORD: Spellswords are sorcerers who have chosen to channel a part of their innate magical capacity to enhancing their perception and combat prowess.
+
+Advantages:
+-  Sorcerer spellcasting
+-  Infravision regardless of race
+-  In character creation, may spend three proficiency points in two-weapon style and two points in other weapon styles (except sword and shield.)
+-  THAC0 reduced by two every time the spellsword gains a new spell level
+-  +6 HP every time the spellsword gains a new spell level
+-  Gains half an additional attack every six levels (up to 5/2 attacks at level 18)
+-  At level 6, spellswords may start wielding their arcane power directly through physical contact.  The spellsword's hands act as magical weapons with 1d6 base damage, enchantment and extra magical damage depending on his or her level: +1 at 6th, +2 at 12th, +3 at 18th and +4 at 24th level.
+-  May cast "Keenness" once/day + once/day/six levels: this ability detects invisibility, as per the 2nd level wizard spell, and betrays any magical effects affecting nearby creatures with a brief red glow.
+-  May cast "Artful Grace" at any spell level available in the spellbook.
+
+Disadvantages:
+-  Each successful hit has a 2% chance of draining a spell from the spellsword and turning it into 4D4+3 magical damage inflicted on the opponent.
+-  Each hit that damages the spellsword has a 3% chance of dispelling magical effects.
+-  +1 penalty to casting time due to the physical effort required
+-  Gains two fewer spells to cast per level than a regular sorcerer
+-  Has the same armor, weapon and item restrictions as a sorcerer; may not specialize in weapons~ // Sorcerer + ssword only
+END
+
+COPY ~RPG-KP/shared/w#swowea.spl~ ~override/w#swowea.spl~
+
+// BUFFOON
+
+BEGIN ~Kitpack Component - Buffoon: bard kit~
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+
+APPEND ~spell.ids~ ~4565 WBUFFOO_FINDTRAPS~
+APPEND ~spell.ids~ ~4566 WBUFFOO_ENHANCED_SONG~
+
+COPY ~RPG-KP/buffoo/copy~ ~override~
+     ~RPG-KP/jester/copy/spcl562B.BAM~ ~override/spcl562B.BAM~
+COPY ~RPG-KP/buffoo/spl/spcl566.spl~ ~override/spcl566.spl~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/buffoo/spl/w#bcone.spl~ ~override/w#bcone.spl~
+  SAY NAME1 ~Confuse~
+  SAY UNIDENTIFIED_DESC ~Confuse~
+COPY ~RPG-KP/buffoo/spl/w#bprot.spl~ ~override/w#bprot.spl~
+  SAY NAME1 ~Protect~
+  SAY UNIDENTIFIED_DESC ~Protect~
+COPY ~RPG-KP/buffoo/spl/w#bufsng.spl~ ~override/w#bufsng.spl~
+  SAY NAME1 ~Enhanced Buffoon Song~
+  SAY UNIDENTIFIED_DESC ~Enhanced Buffoon Song
+High-level buffoons may choose between two songs to play: the offensive song confuses or even charms (10% chance) the buffoon's enemies, while the defensive song protects the party from confusion and charm.  Both songs also give the buffoon slight illusory protection.~
+
+ADD_KIT ~w#buffoo~
+ ~w#buffoo                1           1           1           1           1           1           1           1~
+ ~w#buffoo 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#buffoo                0       12      9       15      9       15~
+ ~w#buffoo                0       0       0       0       0       0~
+ ~w#buffoo                0       17      0       0       0       17~
+ ~w#buffoo                0       15      0       0       0       15~
+ ~w#buffoo                0       1       1       1       1       1       1       1       1~
+ ~w#buffoo                0       0       0       0       0       0~
+ ~RPG-KP/buffoo/w#buffoo.2da~
+ ~K_B_H K_B_E K_B_HE~
+ ~0x00000400     5~
+ ~w#b~
+~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+ SAY ~buffoon~
+ SAY ~Buffoon~
+ SAY ~BUFFOON: The name "buffoon" is in no way a reflection on the intelligence of these travelers, entertainers, gossips, pranksters, and gadflies.  What it does reflect is the way the rest of the world tends to view them, and buffoons carefully cultivate this role, often even to the point of concealing the fact that they possess illusionist skills.  They make friends everywhere they go and enjoy using their skills to aid those friends in a multitude of causes.  Buffoons make themselves figures of fun and then use this as a means of making fun of others - usually with just the right element of sharpness in their wit.
+
+Buffoons are alert and observant, quick to discern who are safe targets, currently out of favor with the powers that be; such unfortunates often become the butt of a Buffoon's jests.  Every Buffoon is adept at keeping the crowd on his or her side, but it is said that every good Buffoon keeps one eye on the exit, ready to beat a hasty retreat should the mood of the onlookers suddenly turn nasty.
+
+Advantages:
+-  Song causes enemies to be Confused and gives the Buffoon illusory protection (random chance of 1 or 2 reflected images, or a bonus to AC vs. missile weapons.)
+-  May cast "Find Traps" at will; success percent is (Buffoon's level * 5) + 20
+-  May cast "Friends" once/day + once/day/six levels.
+
+Disadvantages:
+-  May not learn Necromancy spells
+-  -10% to Slashing, Crushing and Piercing resistance
+-  Must walk around looking ridiculous.~
+
+// BUFFOON (EOE)
+
+BEGIN ~Kitpack Component - Buffoon: Equal Opportunity Edition~
+REQUIRE_FILE ~Data/25Dialog.bif~ ~TOB is required to install this kit.~
+
+ACTION_IF NOT FILE_EXISTS ~override/w#buffoo.2da~
+THEN BEGIN
+APPEND ~spell.ids~ ~4565 WBUFFOO_FINDTRAPS~
+APPEND ~spell.ids~ ~4566 WBUFFOO_ENHANCED_SONG~
+
+COPY ~RPG-KP/buffoo/copy~ ~override~
+     ~RPG-KP/jester/copy/spcl562B.BAM~ ~override/spcl562B.BAM~
+COPY ~RPG-KP/buffoo/spl/spcl566.spl~ ~override/spcl566.spl~
+  SAY NAME1 ~Songbook~
+  SAY UNIDENTIFIED_DESC ~Songbook~
+COPY ~RPG-KP/buffoo/spl/w#bcone.spl~ ~override/w#bcone.spl~
+  SAY NAME1 ~Confuse~
+  SAY UNIDENTIFIED_DESC ~Confuse~
+COPY ~RPG-KP/buffoo/spl/w#bprot.spl~ ~override/w#bprot.spl~
+  SAY NAME1 ~Protect~
+  SAY UNIDENTIFIED_DESC ~Protect~
+COPY ~RPG-KP/buffoo/spl/w#bufsng.spl~ ~override/w#bufsng.spl~
+  SAY NAME1 ~Enhanced Buffoon Song~
+  SAY UNIDENTIFIED_DESC ~Enhanced Buffoon Song
+High-level buffoons may choose between two songs to play: the offensive song confuses or even charms (10% chance) the buffoon's enemies, while the defensive song protects the party from confusion and charm.  Both songs also give the buffoon slight illusory protection.~
+END
+
+COPY ~RPG-KP/buffoo/gbuff/w#gbuff1.spl~ ~override/w#gbuff1.spl~
+     ~RPG-KP/shared/w#gthsoa.spl~ ~override/w#gthsoa.spl~
+     ~RPG-KP/shared/w#gthtob.spl~ ~override/w#gthtob.spl~
+     ~RPG-KP/shared/w#gthtu2.spl~ ~override/w#gthtu2.spl~
+     ~RPG-KP/shared/w#glevel.spl~ ~override/w#glevel.spl~
+
+ADD_KIT ~w#gbuff1~
+ ~w#gbuff1                0           0           0           0           0           0           0           0~
+ ~w#gbuff1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#gbuff1                0       12      9       15      9       15~
+ ~w#gbuff1                0       0       0       0       0       0~
+ ~w#gbuff1                0       17      0       0       0       17~
+ ~w#gbuff1                0       15      0       0       0       15~
+ ~w#gbuff1                0       1       1       1       1       1       1       1       1~
+ ~w#gbuff1                0       0       0       0       0       0~
+ ~RPG-KP/buffoo/gbuff/w#gbuff1.2da~
+ ~K_T_H    K_T_D   K_T_G   K_T_E   K_T_HE   K_T_HL   K_T_HO~
+ ~0x00000400 4~
+ ~Ba0~
+ ~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+ SAY ~buffoon~
+ SAY ~Buffoon~
+ SAY ~BUFFOON: The name "buffoon" is in no way a reflection on the intelligence of these travelers, entertainers, gossips, pranksters, and gadflies.  What it does reflect is the way the rest of the world tends to view them, and buffoons carefully cultivate this role, often even to the point of concealing the fact that they possess illusionist skills.  They make friends everywhere they go and enjoy using their skills to aid those friends in a multitude of causes.  Buffoons make themselves figures of fun and then use this as a means of making fun of others - usually with just the right element of sharpness in their wit.
+
+Buffoons are alert and observant, quick to discern who are safe targets, currently out of favor with the powers that be; such unfortunates often become the butt of a Buffoon's jests.  Every Buffoon is adept at keeping the crowd on his or her side, but it is said that every good Buffoon keeps one eye on the exit, ready to beat a hasty retreat should the mood of the onlookers suddenly turn nasty.
+
+Advantages:
+-  Song causes enemies to be Confused and gives the Buffoon illusory protection (random chance of 1 or 2 reflected images, or a bonus to AC vs. missile weapons.)
+-  May cast "Find Traps" at will; success percent is (Buffoon's level * 5) + 20
+-  May cast "Friends" once/day + once/day/six levels.
+
+Disadvantages:
+-  May not learn Necromancy spells
+-  -10% to Slashing, Crushing and Piercing resistance
+-  Must walk around looking ridiculous.~
+
+ADD_KIT ~w#gbuff2~
+ ~w#gbuff2                1           1           1           1           1           1           1           1~
+ ~w#gbuff2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1~
+ ~w#gbuff2                0       12      9       15      9       15~
+ ~w#gbuff2                0       0       0       0       0       0~
+ ~w#gbuff2                0       17      0       0       0       17~
+ ~w#gbuff2                0       15      0       0       0       15~
+ ~w#gbuff2                0       1       1       1       1       1       1       1       1~
+ ~w#gbuff2                0       0       0       0       0       0~
+ ~RPG-KP/buffoo/gbuff/w#gbuff2.2da~
+ ~~
+ ~0x00000400     5~
+ ~w#b~
+~LEATH14 * * BAG30 RING06 RING34 CLCK02 BOOT01 AMUL19 BRAC16 BELT10 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 DAGG12 SW1H28 STAF08~
+ SAY ~buffoon~
+ SAY ~Buffoon~
+ SAY ~BUFFOON: The name "buffoon" is in no way a reflection on the intelligence of these travelers, entertainers, gossips, pranksters, and gadflies.  What it does reflect is the way the rest of the world tends to view them, and buffoons carefully cultivate this role, often even to the point of concealing the fact that they possess illusionist skills.  They make friends everywhere they go and enjoy using their skills to aid those friends in a multitude of causes.  Buffoons make themselves figures of fun and then use this as a means of making fun of others - usually with just the right element of sharpness in their wit.
+
+Buffoons are alert and observant, quick to discern who are safe targets, currently out of favor with the powers that be; such unfortunates often become the butt of a Buffoon's jests.  Every Buffoon is adept at keeping the crowd on his or her side, but it is said that every good Buffoon keeps one eye on the exit, ready to beat a hasty retreat should the mood of the onlookers suddenly turn nasty.
+
+Advantages:
+-  Song causes enemies to be Confused and gives the Buffoon illusory protection (random chance of 1 or 2 reflected images, or a bonus to AC vs. missile weapons.)
+-  May cast "Find Traps" at will; success percent is (Buffoon's level * 5) + 20
+-  May cast "Friends" once/day + once/day/six levels.
+
+Disadvantages:
+-  May not learn Necromancy spells
+-  -10% to Slashing, Crushing and Piercing resistance
+-  Must walk around looking ridiculous.~
+
+COMPILE ~RPG-KP/buffoo/gbuff/w#gbuff1.baf~
+
+// ARCANE ARCHER
+
+BEGIN ~Kitpack Component - Arcane Archer~
+
+ADD_KIT ~WLARCHER~
+~WLARCHER 1 1 1 1 1 1 1 1~
+~WLARCHER 1 1 5 1 1 1 1 5 1 1   1 1 1 1 1 1 1 1 1 1   1 1 1 5 5 5 5 5 2 2   2 3 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1   1~
+~WLARCHER 9 9 0 9 0 0~
+~WLARCHER 0 1 0 0 0 0~
+~WLARCHER 17 17 0 17 0 0~
+~WLARCHER 15 15 0 15 0 0~
+~WLARCHER 1 1 1 1 1 1 1 1 1~
+~WLARCHER 0 1 1 1 1 0~
+~RPG-KP\aa\WLARCHER.2DA~
+~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+~0x00008000 2~
+~Fi0~
+~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+ SAY ~Arcane Archer~
+ SAY ~Arcane Archer~
+ SAY ~ARCANE ARCHER: The Arcane Archer is a warrior skilled in using magic to supplement his or her combat prowess.  Master of the bow and student of magic, the Archer is an arrowsmith of the highest calibur.  The Archer's sharp eyes and enhanced vision are not easily decieved by hostile illusions.
+
+ADVANTAGES
+
++1 DEX
+
+Lv1   May cast Infravision once per day
+Lv5   May cast Detect Illusion once per day
+Lv9   May cast Oracle once per day
+Lv12  May cast True Sight once per day
+
+Lv1   May craft 15 Arrows per day
+Lv3   May craft 15 Arrows of Ice per day
+Lv4   May craft 15 Arrows of Fire per day
+Lv6   May craft 15 Arrows +1 per day
+Lv7   May craft 15 Arrows of Acid per day
+Lv9   May craft 3 Arrows of Dispelling per day
+Lv11  May craft 15 Arrows +2 per day
+Lv13  May craft 3 Arrows of Detonation per day
+Lv15  May craft 15 Arrows +3 per day
+Lv17  May craft 1 Arrow of Slaying (Humanoid) per day
+
+DISADVANTAGES
+
+May not wear armor greater than studded leather
+
+May not place more than one proficiency point into any melee weapon.~
+
+COPY_EXISTING ~SPWI111.SPL~ ~override/WLINFRAV.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI322.SPL~ ~override/WLDETECT.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI515.SPL~ ~override/WLORACLE.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI609.SPL~ ~override/WLTRUTHS.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~AROW09.ITM~ ~override/WLAROW03.ITM~
+ WRITE_SHORT 0x42 0
+ WRITE_SHORT 0x86 2
+
+COPY_EXISTING ~AROW08.ITM~ ~override/WLAROW04.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW02.ITM~ ~override/WLAROW06.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW04.ITM~ ~override/WLAROW07.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW07.ITM~ ~override/WLAROW09.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW11.ITM~ ~override/WLAROW11.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW06.ITM~ ~override/WLAROW13.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW15.ITM~ ~override/WLAROW15.ITM~
+ WRITE_SHORT 0x42 0
+
+COPY ~RPG-KP\aa\AROWWL.ITM~ ~override/WLAROW17.ITM~
+ SAY DESC ~This arrow is twisted and black, almost radiating evil as if possessed by something larger than itself.  It was made specifically to kill one type of creature and one type only.  In this case the unlucky being is any humanoid.
+
+STATISTICS:
+
+Always considered to be non-enchanted when determining what it can hit
+Damage: 1D6
+Damage type: missile (piercing)
+Special: Slay humanoid upon touch
+Weight: 0
+Launcher: Bow~
+ WRITE_SHORT 0x42 0
+
+COPY_EXISTING ~AROW09.ITM~ ~override/AROW09.ITM~
+ WRITE_SHORT 0x86 2
+
+COPY ~RPG-KP\aa\WLARROW0.SPL~ ~override/WLARROW0.SPL~
+ SAY NAME1 ~Craft Arrows~
+
+//Hellion- aWL
+
+BEGIN ~Kitpack Component - Hellion~
+
+ADD_KIT ~WLHELLW~
+~WLHELLW 1 1 1 1 1 1 1 1~
+~WLHELLW 3 3 1 1 1 1 3 1 3 3   3 3 3 3 3 3 1 1 1 1   1 1 1 1 1 1 1 1 2 2   2 3 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1   1~
+~WLHELLW 9 0 0 9 0 0~
+~WLHELLW 0 0 0 0 0 0~
+~WLHELLW 17 0 0 17 0 0~
+~WLHELLW 15 0 0 15 0 0~
+~WLHELLW 0 0 1 0 0 1 0 0 1~
+~WLHELLW 0 0 1 1 0 0~
+~RPG-KP/Hellion/WLHELLW.2DA~
+~K_F_H K_F_D K_F_G K_F_E K_F_HE K_F_HL K_F_HO~
+~0x00000001 2~
+~HW0~
+~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+
+// lower, mixed, & help kit names & descriptions
+SAY ~Hellion~
+SAY ~Hellion~
+SAY ~HELLION: The Hellion is a fierce warrior who honors the Dark Prince of the Hells.  He or she respects strength, power, and cunning above all else.  The Hellion is a student of the Black Arts and may summon Fiends to his side in battle (though these are apt to turn on the Hellion if he or she has not cast protective magics).
+
+ADVANTAGES
+
+Immune to Death Magic
+
+May cast Protection From Evil once per day per level
+
+May cast Banish once per day every four levels starting at Lv4
+
+Lv12  May cast Death Spell once per day
+Lv14  May cast Cacofiend once per day
+Lv16  May cast Summon Fiend once per day
+Lv18  May cast Gate once per day
+Lv20  May cast Summon Dark Planetar once per day
+
+DISADVANTAGES
+
+Must be of an Evil alignment
+
+May not Dual-Class except to Mage or Thief
+
+May not place more than three proficiency points into any bladed weapon
+
+May not place more than one proficiency point into any non-bladed weapon
+
+NOTES
+
+Banish
+
+Level: Special
+Range: 50
+Duration: Instant
+Casting Time: 1
+Area of Effect: 1 Summoned Fiend
+Saving Throw: None
+
+This spell banishes a summoned Fiend back to the Lower Planes.~
+
+COPY ~RPG-KP/Hellion/WLHELLD.SPL~ ~override/WLHELLD.SPL~
+
+COPY ~RPG-KP/Hellion/WLHELL1.SPL~ ~override/WLHELL1.SPL~
+
+COPY ~RPG-KP/Hellion/WLHELL2.SPL~ ~override/WLHELL2.SPL~
+ SAY NAME1 ~Banish~
+
+COPY_EXISTING ~SPWI605.SPL~ ~override/WLHELL3.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI707.SPL~ ~override/WLHELL4.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI807.SPL~ ~override/WLHELL5.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI905.SPL~ ~override/WLHELL6.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+
+COPY_EXISTING ~SPWI924.SPL~ ~override/WLHELL7.SPL~
+ WRITE_SHORT 0x1C 4 // spell type set to innate
+ WRITE_SHORT 0x74 4 // ability icon location set to innate slots
+ WRITE_SHORT 0x9C 4 // ability icon location set to innate slots
+ WRITE_SHORT 0xC4 4 // ability icon location set to innate slots
+ WRITE_SHORT 0xEC 4 // ability icon location set to innate slots
+
+COPY ~RPG-KP/Hellion/LUHW0.2DA~ ~override/LUHW0.2DA~
+
+// DUALTHROWN
+
+BEGIN ~Kitpack Component - Dual-wielding for thrown weapons tweak~
+
+COPY ~RPG-KP/dualthrown/copy~ ~override~
+ACTION_IF FILE_EXISTS ~override/c2ax1h01.itm~
+THEN BEGIN
+COPY_EXISTING ~c2ax1h01.itm~ ~override/c2ax1h01.itm~
+     READ_LONG NAME2 ~azurname~
+     READ_LONG IDENTIFIED_DESC ~azurdesc~
+COPY ~RPG-KP/dualthrown/c2ax1h01.itm~ ~override/c2ax1h01.itm~
+     WRITE_LONG NAME2 ~%azurname%~
+     WRITE_LONG IDENTIFIED_DESC ~%azurdesc%~
+COPY ~RPG-KP/dualthrown/w#c2azur.itm~ ~override/w#c2azur.itm~
+     WRITE_LONG NAME2 ~%azurname%~
+     WRITE_LONG IDENTIFIED_DESC ~%azurdesc%~
+COMPILE ~RPG-KP/dualthrown/dtsoa.d~
+ACTION_IF FILE_EXISTS ~Data/25Dialog.bif~
+THEN BEGIN
+COMPILE ~RPG-KP/dualthrown/dttob.d~
+END
+END
+
+
+// Original sorcerer description
+
+BEGIN ~Kitpack Component - Original Sorcerer description~
+REQUIRE_FILE ~override/w#swowea.spl~ ~~
+STRING_SET ~45866~ ~SORCERER: Sorcerers are practitioners of magic who were born with the innate ability to cast spells.  It is thought that the blood of some powerful creature flows through their veins; perhaps they are the spawn of the gods themselves, or even dragons walking in humanoid form.  Regardless, the Sorcerer's magic is intuitive rather than logical.  They know fewer spells than wizards, and acquire spells more slowly, but they can cast spells more often and have no need to select and prepare spells ahead of time.  Sorcerers cannot specialize in magic the way wizards do.  Other than these differences, a Sorcerer is very similar to a wizard.
+NOTE:  A sorcerer does NOT learn spells from scrolls, but instead chooses new spells with each level.  A sorcerer's prime requisite is INTELLIGENCE.~
+
+//Spells involving new animations - One as per 03:36am
+
+BEGIN ~Kitpack Component - Spell Additions ~
+
+APPEND ~animate.ids~ //Appending IWD Animation, with file check
+~0xE200 IC_BEETLE_COPPER ~
+  UNLESS ~0xE200~
+
+COPY ~RPG-KP/spells/sumbov/animation~ ~override~ //Bovine Graphics
+COPY ~RPG-KP/spells/sumbov/s#bov.eff~ ~override~ //Bovine eff sums
+
+COPY ~RPG-KP/spells/sumbov/s#bov.cre~ ~override~ //Bovine cre
+ SAY 0x8   ~Bovine~ // name
+ SAY 0xc   ~Bovine~ // name
+ SAY BATTLE_CRY1 ~~ [s#bova] //ported
+ SAY BATTLE_CRY2 ~~ [s#bov8] //ported
+ SAY BATTLE_CRY3 ~~ [s#bov9] //ported
+ SAY BATTLE_CRY4 ~~ [SK#CRY2]
+ SAY HURT ~~ [s#bovl] //ported
+ SAY DYING ~~ [s#bovm]//ported
+ SAY SELECT_COMMON1 ~~ [s#bovf] //ported
+ SAY SELECT_ACTION1 ~~ [s#bovi] //ported
+ SAY REACT_TO_DIE_GENERAL ~~ [s#bovw] //PORTED
+
+COPY ~RPG-KP/spells/sumbov/s#bov.spl~ ~override~ //Bovine Summons spell
+ SAY NAME1 ~Summon Bovine~
+ SAY NAME2 ~Summon Bovine~
+ SAY DESC ~Summon Bovine (Conjuration)
+Level: 7
+Range: 40 yards
+Duration: 8 rounds + 1 round/level
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+This spell is similar to none other... aside the infamous Summon Cow.~
+
+COPY ~RPG-KP/spells/sumbov/s#bov.itm~ ~override~ //Bovine Summons scroll
+ SAY NAME1 ~Summon Bovine~
+ SAY NAME2 ~Summon Bovine~
+ SAY DESC ~Summon Bovine (Conjuration)
+Level: 7
+Range: 40 yards
+Duration: 8 rounds + 1 round/level
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+This spell is similar to none other... aside the infamous Summon Cow.~
+
+COPY ~RPG-KP\spells\sumbov\sound~ ~override~
+COPY ~RPG-KP\rpg_install.bat~ ~rpg_install.bat~
+AT_INTERACTIVE_EXIT ~rpg_install.bat~
+AT_UNINSTALL ~rpg_uninstall.bat~
+
+//Add the scarecrow
+
+APPEND ~animate.ids~ //Appending IWD Animation, with file check
+~0xE210 IC_BEETLE_FIRE~
+  UNLESS ~0xE210~
+
+COPY ~RPG-KP/spells/scare/animation~ ~override~ //Scarecrow Graphics
+COPY ~RPG-KP/spells/scare/s#crow.eff~ ~override~ //Scarecrow eff sums
+
+COPY ~RPG-KP/spells/scare/s#crow.cre~ ~override~ //Scarecrow cre
+ SAY 0x8   ~Scarecrow~ // name
+ SAY 0xc   ~Scarecrow~ // name
+
+COPY ~RPG-KP/spells/scare/s#crow.spl~ ~override~ //Scarecrow Summons spell
+ SAY NAME1 ~Summon Scarecrow~
+ SAY DESC ~Summon Scarecrow (Conjuration)
+Level: 4
+Range: 40 yards
+Duration: 8 rounds + 1 round/level
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+The Scarecrow is a pretty interesting beast. It's very much a golem, although one would not readily associate it with the hulking Iron Golem or the menacing bone golem. One could consider the Scarecrow to be the poor man's golem. Despite this, Scarecrows are nothing to be scoffed at, especially by those of lower levels. Though they are wrought only from wood, straw, and rope, they possess an otherworldly gaze that is able to enthrall opponents in a paralytic state of fascination. As if this were not enough, their very touch can inflict that same state. They do possess a weakness, however, in that their bodies are highly susceptible to fire.~
+
+COPY ~RPG-KP/spells/scare/s#crow.itm~ ~override~ //Scarecrow Summons scroll
+ SAY NAME1 ~Summon Scarecrow~
+ SAY NAME2 ~Summon Scarecrow~
+ SAY DESC ~Summon Scarecrow (Conjuration)
+Level: 4
+Range: 40 yards
+Duration: 8 rounds + 1 round/level
+Casting Time: 1 round
+Area of Effect: Special
+Saving Throw: None
+
+The Scarecrow is a pretty interesting beast. It's very much a golem, although one would not readily associate it with the hulking Iron Golem or the menacing bone golem. One could consider the Scarecrow to be the poor man's golem. Despite this, Scarecrows are nothing to be scoffed at, especially by those of lower levels. Though they are wrought only from wood, straw, and rope, they possess an otherworldly gaze that is able to enthrall opponents in a paralytic state of fascination. As if this were not enough, their very touch can inflict that same state. They do possess a weakness, however, in that their bodies are highly susceptible to fire.~
+
+//Adding to Ribald
+
+COPY_EXISTING ~ribald.sto~ ~override/ribald.sto~
+ADD_STORE_ITEM "s#crow" #1 #0 #0 ~IDENTIFIED~ #5
+ADD_STORE_ITEM "s#bov" #1 #0 #0 ~IDENTIFIED~ #5

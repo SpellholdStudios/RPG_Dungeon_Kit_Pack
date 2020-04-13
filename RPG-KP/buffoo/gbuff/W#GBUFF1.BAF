@@ -1,0 +1,129 @@
+IF
+        !Class(Myself,BARD)	
+        AreaCheck("AR0602")
+	Global("MoveScreen","AR0602",1)
+	Global("w#gbuff1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,BARD)
+	AreaCheck("AR4000")
+	Global("EnteredAR4000","AR4000",1)
+	Global("w#gbuff1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",1)
+		Continue()
+END
+
+IF
+        !Class(Myself,BARD)
+        !AreaCheck("AR0602")
+	!AreaCheck("AR4000")
+	Global("w#gbuff1","LOCALS",0)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("w#gbuff1","LOCALS",1)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ChangeClass(Myself,BARD)
+		SetGlobal("w#gbuff1","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("w#gbuff1","LOCALS",2)
+	AreaCheck("FW2600")
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("W#GTHTU2",Myself) // <NO TEXT>
+		SetGlobal("w#gbuff1","LOCALS",3)
+		SetGlobal("w#gbinit","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("w#gbuff1","LOCALS",2)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("W#GTHSOA",Myself) // <NO TEXT>
+		SetGlobal("w#gbuff1","LOCALS",3)
+		SetGlobal("w#gbinit","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("w#gbuff1","LOCALS",2)
+	GlobalGT("Chapter","GLOBAL",7)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("W#GTHTOB",Myself) // <NO TEXT>
+		SetGlobal("w#gbuff1","LOCALS",3)
+		SetGlobal("w#gbinit","LOCALS",3)
+		Continue()
+END
+
+IF
+	Global("w#gbuff1","LOCALS",3)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		AddKit(w#gbuff2)
+		SetGlobal("w#gbuff1","LOCALS",4)
+		Continue()
+END
+
+// Multi-player check
+
+IF
+        Class(Myself,BARD)
+        Global("w#gbuff1","LOCALS",0)
+        AreaCheck("FW2600")
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",4)
+		SetGlobal("w#gbinit","LOCALS",1)
+END
+
+IF
+        Class(Myself,BARD)
+        Global("w#gbuff1","LOCALS",0)
+	!AreaCheck("FW2600")
+	GlobalLT("Chapter","GLOBAL",8)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",4)
+		SetGlobal("w#gbinit","LOCALS",2)
+END
+
+IF
+        Class(Myself,BARD)
+        Global("w#gbuff1","LOCALS",0)
+	GlobalGT("Chapter","GLOBAL",7)
+	Global("EnteredAR4000","AR4000",1)
+        ActionListEmpty()
+THEN
+	RESPONSE #100
+		SetGlobal("w#gbuff1","LOCALS",4)
+		SetGlobal("w#gbinit","LOCALS",3)
+END

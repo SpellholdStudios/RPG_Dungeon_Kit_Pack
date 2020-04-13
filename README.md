@@ -1,7 +1,7 @@
 
 ![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/Phaere_NPC_Portraits_for_BG2?include_prereleases&color=darkred)<a name="top" id="top"> </a>
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20Mac%20%7C%20linux&color=informational)
-![Language](https://img.shields.io/static/v1?label=language&message=English%20%7C%20French&color=limegreen)
+![Language](https://img.shields.io/static/v1?label=language&message=English&color=limegreen)
 
 <div align="center"><h1>RPG Dungeon Kit Pack (WIP)</h1>
 
